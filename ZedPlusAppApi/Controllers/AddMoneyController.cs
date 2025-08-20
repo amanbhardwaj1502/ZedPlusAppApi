@@ -10,6 +10,7 @@ namespace ZedPlusAppApi.Controllers
 {
     public class AddMoneyController : ApiController
     {
+        // GET: AddMoney
         [System.Web.Http.HttpPost]
         [System.Web.Http.Route("api/Addmoney")]
 
