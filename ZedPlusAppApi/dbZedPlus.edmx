@@ -1,0 +1,2925 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="dbzedplusshopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Filters">
+          <Key>
+            <PropertyRef Name="FilterID" />
+          </Key>
+          <Property Name="FilterID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FilterName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="SubmenuID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="FilterValues">
+          <Key>
+            <PropertyRef Name="ValueID" />
+          </Key>
+          <Property Name="ValueID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FilterID" Type="bigint" />
+          <Property Name="Value" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PayoutDistribution">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerID" Type="bigint" />
+          <Property Name="SponsorID" Type="bigint" />
+          <Property Name="Level" Type="int" />
+          <Property Name="Amount" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="MainCustomerID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="ProductVariants">
+          <Key>
+            <PropertyRef Name="VariantID" />
+          </Key>
+          <Property Name="VariantID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductID" Type="bigint" />
+          <Property Name="AdditionalPrice" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Stock" Type="int" />
+          <Property Name="SKU" Type="varchar" MaxLength="50" />
+          <Property Name="IsPrimary" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblAddress">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountryId" Type="bigint" />
+          <Property Name="StateId" Type="bigint" />
+          <Property Name="CityID" Type="bigint" />
+          <Property Name="DistrictId" Type="bigint" />
+          <Property Name="AddressType" Type="varchar" MaxLength="100" />
+          <Property Name="Address" Type="varchar" MaxLength="5000" />
+          <Property Name="PinCode" Type="varchar" MaxLength="50" />
+          <Property Name="CustomerId" Type="bigint" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" />
+          <Property Name="AlternatePhone" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblBankMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Bank_name" Type="varchar" MaxLength="50" />
+          <Property Name="Bank_Status" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblBrandMaster">
+          <Key>
+            <PropertyRef Name="BrandID" />
+          </Key>
+          <Property Name="BrandID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Brand_Name" Type="varchar" MaxLength="100" />
+          <Property Name="Brand_Image" Type="varchar" MaxLength="200" />
+          <Property Name="Brand_Status" Type="varchar" MaxLength="100" />
+          <Property Name="Date" Type="date" />
+        </EntityType>
+        <EntityType Name="tblBussinessPlan">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DocumentUrl" Type="varchar" MaxLength="500" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="EntryDate" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblCareer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="Mobile" Type="varchar" MaxLength="100" />
+          <Property Name="Subject" Type="varchar" MaxLength="100" />
+          <Property Name="Resume" Type="varchar" MaxLength="100" />
+          <Property Name="Date" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tblCart">
+          <Key>
+            <PropertyRef Name="CartID" />
+          </Key>
+          <Property Name="CartID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerID" Type="bigint" />
+          <Property Name="ItemID" Type="bigint" />
+          <Property Name="SizeID" Type="bigint" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="TotalPice" Type="bigint" />
+          <Property Name="Date" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="VarientId" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tblCategoryMaster">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Category_Name" Type="varchar" MaxLength="100" />
+          <Property Name="Category_Status" Type="varchar" MaxLength="50" />
+          <Property Name="Date" Type="date" />
+          <Property Name="CategoryImage" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="tblCategorySlider">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ImagePath" Type="varchar" MaxLength="500" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblCityMaster">
+          <Key>
+            <PropertyRef Name="CityID" />
+          </Key>
+          <Property Name="CityID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="City_Name" Type="varchar" MaxLength="100" />
+          <Property Name="City_Status" Type="varchar" MaxLength="50" />
+          <Property Name="DistrictID" Type="bigint" />
+          <Property Name="PinCode" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tblColorMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Color_Name" Type="varchar" MaxLength="100" />
+          <Property Name="Date" Type="date" />
+          <Property Name="Status" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tblCountryMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Country_Name" Type="varchar" MaxLength="100" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblCustomer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerCode" Type="varchar" MaxLength="100" />
+          <Property Name="CustomerName" Type="varchar" MaxLength="100" />
+          <Property Name="CustomerEmail" Type="varchar" MaxLength="50" />
+          <Property Name="CustomerPassword" Type="varchar" MaxLength="50" />
+          <Property Name="CustomerImage" Type="varchar" MaxLength="100" />
+          <Property Name="CustomerAddress" Type="varchar" MaxLength="200" />
+          <Property Name="CustomerPhone" Type="bigint" />
+          <Property Name="CustomerZIP" Type="bigint" />
+          <Property Name="StateID" Type="bigint" />
+          <Property Name="CityID" Type="bigint" />
+          <Property Name="CustomerLandmark" Type="varchar" MaxLength="100" />
+          <Property Name="CustomerPointValue" Type="varchar" MaxLength="100" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="Customer_Gender" Type="varchar" MaxLength="50" />
+          <Property Name="UserID" Type="bigint" />
+          <Property Name="DOB" Type="varchar" MaxLength="50" />
+          <Property Name="pvvlaue" Type="float" />
+          <Property Name="SponserID" Type="bigint" />
+          <Property Name="Position" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="tblCustomerAadharCard">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AadharNumder" Type="varchar" MaxLength="50" />
+          <Property Name="CustomerId" Type="bigint" />
+          <Property Name="AadharFrontImage" Type="varchar(max)" />
+          <Property Name="AadharBankImage" Type="varchar(max)" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="DateTime" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblCustomerApply">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RequirementID" Type="bigint" />
+          <Property Name="CustomerID" Type="bigint" />
+          <Property Name="FullName" Type="varchar" MaxLength="500" />
+          <Property Name="MobileNumber" Type="varchar" MaxLength="50" />
+          <Property Name="City" Type="varchar" MaxLength="500" />
+          <Property Name="Remarks" Type="varchar" MaxLength="500" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="EntryDateTime" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblCustomerBankDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerID" Type="bigint" Nullable="false" />
+          <Property Name="FullName" Type="varchar" MaxLength="100" />
+          <Property Name="AccountNumber" Type="varchar" MaxLength="100" />
+          <Property Name="IFSCcode" Type="varchar" MaxLength="100" />
+          <Property Name="BranchName" Type="varchar" MaxLength="100" />
+          <Property Name="Status" Type="varchar" MaxLength="100" />
+          <Property Name="BankID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tblCustomerDummy">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerCode" Type="varchar" MaxLength="100" />
+          <Property Name="CustomerName" Type="varchar" MaxLength="100" />
+          <Property Name="CustomerEmail" Type="varchar" MaxLength="50" />
+          <Property Name="CustomerPassword" Type="varchar" MaxLength="50" />
+          <Property Name="CustomerImage" Type="varchar" MaxLength="100" />
+          <Property Name="CustomerAddress" Type="varchar" MaxLength="200" />
+          <Property Name="CustomerPhone" Type="bigint" />
+          <Property Name="CustomerZIP" Type="bigint" />
+          <Property Name="StateID" Type="bigint" />
+          <Property Name="CityID" Type="bigint" />
+          <Property Name="CustomerLandmark" Type="varchar" MaxLength="100" />
+          <Property Name="CustomerPointValue" Type="varchar" MaxLength="100" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="Customer_Gender" Type="varchar" MaxLength="50" />
+          <Property Name="UserID" Type="bigint" />
+          <Property Name="DOB" Type="varchar" MaxLength="50" />
+          <Property Name="pvvlaue" Type="float" />
+          <Property Name="SponserID" Type="bigint" />
+          <Property Name="Position" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="tblCustomerPanCard">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerID" Type="bigint" />
+          <Property Name="PanCardNumber" Type="varchar" MaxLength="100" />
+          <Property Name="PanCardImage" Type="varchar(max)" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="DateTime" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblCustomerQuery">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerID" Type="bigint" />
+          <Property Name="FullName" Type="varchar" MaxLength="500" />
+          <Property Name="EmailID" Type="varchar" MaxLength="500" />
+          <Property Name="Subject" Type="varchar" MaxLength="500" />
+          <Property Name="Remarks" Type="varchar" MaxLength="500" />
+          <Property Name="EntryDateTime" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblDashboardSlider">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ImagePath" Type="varchar" MaxLength="500" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblDistrictMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DistrictName" Type="varchar" MaxLength="100" />
+          <Property Name="StateID" Type="bigint" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblDocumentMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Document_Name" Type="varchar" MaxLength="5000" />
+          <Property Name="Document_Path" Type="varchar" MaxLength="5000" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblDummyCustdata">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ZEDPLUSID" Type="varchar" MaxLength="100" />
+          <Property Name="Name" Type="varchar" MaxLength="200" />
+          <Property Name="superzedplusid" Type="varchar" MaxLength="100" />
+          <Property Name="mobileno" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblFabricTypeMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FabricType" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblFilterAllotment">
+          <Key>
+            <PropertyRef Name="AllotID" />
+          </Key>
+          <Property Name="AllotID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryID" Type="bigint" />
+          <Property Name="SubCategoryID" Type="bigint" />
+          <Property Name="SubMenuID" Type="bigint" />
+          <Property Name="Size" Type="bit" />
+          <Property Name="Color" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblFranchiseRequest">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerID" Type="bigint" />
+          <Property Name="StoreTypeID" Type="bigint" />
+          <Property Name="FullName" Type="varchar" MaxLength="50" />
+          <Property Name="MobileNo" Type="varchar" MaxLength="50" />
+          <Property Name="Remarks" Type="varchar" MaxLength="500" />
+          <Property Name="EntryDateTime" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblGrievance">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerID" Type="bigint" />
+          <Property Name="Title" Type="varchar" MaxLength="100" />
+          <Property Name="Description" Type="varchar" MaxLength="500" />
+          <Property Name="DocumentPath" Type="varchar" MaxLength="500" />
+          <Property Name="EntryDateTime" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="Remarks" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="tblHSNmaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HSN_code" Type="varchar" MaxLength="50" />
+          <Property Name="SubMenuID" Type="bigint" />
+          <Property Name="Date" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="GST" Type="float" />
+          <Property Name="Description" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="tblIntroducer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Introducer_Name" Type="varchar" MaxLength="100" />
+          <Property Name="Introducer_Email" Type="varchar" MaxLength="100" />
+          <Property Name="Introducer_Mobile" Type="varchar" MaxLength="100" />
+          <Property Name="Introducer_Address" Type="varchar" MaxLength="500" />
+          <Property Name="Status" Type="varchar" MaxLength="100" />
+          <Property Name="Date" Type="date" />
+          <Property Name="CustomerID" Type="bigint" Nullable="false" />
+          <Property Name="StateID" Type="bigint" />
+          <Property Name="CityID" Type="bigint" />
+          <Property Name="District" Type="bigint" />
+          <Property Name="PinCode" Type="varchar" MaxLength="100" />
+          <Property Name="Gender" Type="varchar" MaxLength="100" />
+          <Property Name="FatherName" Type="varchar" MaxLength="100" />
+          <Property Name="CountryId" Type="bigint" />
+          <Property Name="SponsorID" Type="bigint" />
+          <Property Name="PraposerID" Type="bigint" />
+          <Property Name="Introducer_Image" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="tblIntroducerIncome">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CID" Type="bigint" />
+          <Property Name="UserID" Type="bigint" />
+          <Property Name="Date" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="Amount" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblItemMaster">
+          <Key>
+            <PropertyRef Name="ItemID" />
+          </Key>
+          <Property Name="ItemID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Item_Name" Type="varchar" MaxLength="100" />
+          <Property Name="Item_Image" Type="varchar" MaxLength="200" />
+          <Property Name="Item_Status" Type="varchar" MaxLength="100" />
+          <Property Name="Item_Price" Type="varchar" MaxLength="100" />
+          <Property Name="Item_Detail" Type="varchar" MaxLength="200" />
+          <Property Name="BrandID" Type="bigint" />
+          <Property Name="CategoryID" Type="bigint" />
+          <Property Name="SubCategoryID" Type="bigint" />
+          <Property Name="SubMenuID" Type="bigint" />
+          <Property Name="Date" Type="date" />
+          <Property Name="Item_PointValue" Type="varchar" MaxLength="200" />
+          <Property Name="Item_Qty" Type="varchar" MaxLength="200" />
+          <Property Name="Item_Cost" Type="varchar" MaxLength="200" />
+          <Property Name="Item_Discount" Type="varchar" MaxLength="200" />
+          <Property Name="Item_Sizes" Type="varchar" MaxLength="200" />
+          <Property Name="Item_Color" Type="varchar" MaxLength="200" />
+          <Property Name="MemberPrice" Type="float" />
+        </EntityType>
+        <EntityType Name="tblLegalDocument">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DocumentName" Type="varchar" MaxLength="500" />
+          <Property Name="DocumentDetail" Type="varchar" MaxLength="500" />
+          <Property Name="EntryDate" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblMeetingJoinMembers">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerID" Type="bigint" />
+          <Property Name="MeetingID" Type="bigint" />
+          <Property Name="TotalPersonJoin" Type="varchar" MaxLength="500" />
+          <Property Name="EntryDate" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblMeetingSchedule">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MeetingDate" Type="varchar" MaxLength="50" />
+          <Property Name="MeetingCity" Type="varchar" MaxLength="500" />
+          <Property Name="Location" Type="varchar" MaxLength="500" />
+          <Property Name="Timing" Type="varchar" MaxLength="500" />
+          <Property Name="EntryDate" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="Latitude" Type="varchar" MaxLength="50" />
+          <Property Name="Longitude" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblMember">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Member_Name" Type="varchar" MaxLength="100" />
+          <Property Name="Member_Email" Type="varchar" MaxLength="100" />
+          <Property Name="Member_Mobile" Type="varchar" MaxLength="100" />
+          <Property Name="Member_Address" Type="varchar" MaxLength="100" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="Date" Type="date" />
+          <Property Name="CustomerID" Type="bigint" Nullable="false" />
+          <Property Name="StateID" Type="bigint" />
+          <Property Name="CityID" Type="bigint" />
+          <Property Name="District" Type="bigint" />
+          <Property Name="PinCode" Type="varchar" MaxLength="100" />
+          <Property Name="Gender" Type="varchar" MaxLength="100" />
+          <Property Name="UserID" Type="bigint" />
+          <Property Name="FatherName" Type="varchar" MaxLength="100" />
+          <Property Name="CountryId" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tblMOQmaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemID" Type="bigint" />
+          <Property Name="MOQQuantity" Type="bigint" />
+          <Property Name="EffectiveDate" Type="varchar" MaxLength="50" />
+          <Property Name="EntryDate" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="StoreTypeID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tblNotification">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NotificationDate" Type="varchar" MaxLength="50" />
+          <Property Name="NotificationTitle" Type="varchar" MaxLength="500" />
+          <Property Name="NotificationDetail" Type="varchar" MaxLength="500" />
+          <Property Name="EntryDate" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="CustomerID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tblOrder">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerID" Type="bigint" />
+          <Property Name="Itemid" Type="bigint" />
+          <Property Name="VaraintsID" Type="bigint" />
+          <Property Name="TotalPrice" Type="bigint" Nullable="false" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="OrderStatus" Type="varchar" MaxLength="50" />
+          <Property Name="Date" Type="date" />
+          <Property Name="TotalPV" Type="varchar" MaxLength="200" />
+          <Property Name="AddressId" Type="bigint" />
+          <Property Name="OrderNumber" Type="varchar(max)" />
+          <Property Name="PaymentStatus" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblOrderItems">
+          <Key>
+            <PropertyRef Name="OrderItemID" />
+          </Key>
+          <Property Name="OrderItemID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderID" Type="bigint" />
+          <Property Name="ProductID" Type="bigint" />
+          <Property Name="VariantID" Type="bigint" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="Price" Type="decimal" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="tblPackingType">
+          <Key>
+            <PropertyRef Name="PackingTypeID" />
+          </Key>
+          <Property Name="PackingTypeID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryID" Type="bigint" />
+          <Property Name="SubCategoryID" Type="bigint" />
+          <Property Name="PackingTypeName" Type="varchar" MaxLength="255" />
+          <Property Name="SubMenu" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tblPayment">
+          <Key>
+            <PropertyRef Name="PaymentID" />
+          </Key>
+          <Property Name="PaymentID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderID" Type="bigint" />
+          <Property Name="CustomerID" Type="bigint" />
+          <Property Name="PaymentStatus" Type="varchar" MaxLength="50" />
+          <Property Name="PaymentAmount" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="PaymentDate" Type="varchar" MaxLength="50" />
+          <Property Name="PaymentMethod" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblProduct">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryID" Type="bigint" />
+          <Property Name="SubcategoryID" Type="bigint" />
+          <Property Name="SubMenuID" Type="bigint" />
+          <Property Name="Item_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Stock" Type="bigint" />
+          <Property Name="UnitValue" Type="varchar" MaxLength="50" />
+          <Property Name="UnitID" Type="bigint" />
+          <Property Name="QuantityperCarton" Type="bigint" />
+          <Property Name="MRP" Type="float" />
+          <Property Name="BasicDiscountType" Type="varchar" MaxLength="50" />
+          <Property Name="BasicDiscount" Type="float" />
+          <Property Name="NRP" Type="float" />
+          <Property Name="MemberDiscountType" Type="varchar" MaxLength="50" />
+          <Property Name="MemberDiscount" Type="float" />
+          <Property Name="DP" Type="float" />
+          <Property Name="PV" Type="varchar" MaxLength="100" />
+          <Property Name="GST" Type="float" />
+          <Property Name="BARCODE" Type="varchar" MaxLength="50" />
+          <Property Name="FranchiseType" Type="varchar" MaxLength="50" />
+          <Property Name="FranchiseDiscountValue" Type="float" />
+          <Property Name="FranchiseCommission" Type="float" />
+          <Property Name="ManagementType" Type="varchar" MaxLength="50" />
+          <Property Name="ManagementDiscountValue" Type="float" />
+          <Property Name="ManagementCommission" Type="float" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="DistributionType" Type="varchar" MaxLength="50" />
+          <Property Name="DistributionDiscountValue" Type="float" />
+          <Property Name="DistributionCommission" Type="float" />
+          <Property Name="OtherType" Type="varchar" MaxLength="50" />
+          <Property Name="OtherDiscountValue" Type="float" />
+          <Property Name="OtherCommission" Type="float" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="Date" Type="varchar" MaxLength="50" />
+          <Property Name="BrandID" Type="bigint" />
+          <Property Name="PackingID" Type="bigint" />
+          <Property Name="HsnCode" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tblproductinfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductID" Type="bigint" Nullable="false" />
+          <Property Name="GTIN" Type="varchar" MaxLength="50" />
+          <Property Name="ProductOrigin" Type="varchar" MaxLength="50" />
+          <Property Name="ManufacturerName" Type="nchar" MaxLength="10" />
+          <Property Name="WarrantyPeriod" Type="nchar" MaxLength="10" />
+          <Property Name="NetWeight" Type="nchar" MaxLength="10" />
+          <Property Name="NetContent" Type="nchar" MaxLength="10" />
+          <Property Name="GrossWeight" Type="varchar" MaxLength="50" />
+          <Property Name="Tags" Type="nchar" MaxLength="10" />
+          <Property Name="ReturnPolicy" Type="bit" />
+          <Property Name="SKU" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblProductTransfer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="source_storeID" Type="bigint" />
+          <Property Name="destination_storeID" Type="bigint" />
+          <Property Name="Product_id" Type="bigint" />
+          <Property Name="Quantity" Type="bigint" />
+          <Property Name="UnitID" Type="bigint" />
+          <Property Name="QuantityperCarton" Type="bigint" />
+          <Property Name="StockQTY" Type="bigint" />
+          <Property Name="transfer_date" Type="varchar" MaxLength="50" />
+          <Property Name="status" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblProductType">
+          <Key>
+            <PropertyRef Name="ProductTypeID" />
+          </Key>
+          <Property Name="ProductTypeID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryID" Type="bigint" />
+          <Property Name="SubCategoryID" Type="bigint" />
+          <Property Name="ProductTypeName" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="tblpromotionincome">
+          <Key>
+            <PropertyRef Name="pid" />
+          </Key>
+          <Property Name="pid" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cid" Type="bigint" />
+          <Property Name="amount1" Type="varchar" MaxLength="50" />
+          <Property Name="amount2" Type="varchar" MaxLength="50" />
+          <Property Name="amount3" Type="varchar" MaxLength="50" />
+          <Property Name="amount4" Type="varchar" MaxLength="50" />
+          <Property Name="amount5" Type="varchar" MaxLength="50" />
+          <Property Name="cstatus" Type="varchar" MaxLength="30" />
+          <Property Name="cdate" Type="varchar" MaxLength="30" />
+          <Property Name="Remarks1" Type="varchar" MaxLength="100" />
+          <Property Name="Remarks2" Type="varchar" MaxLength="100" />
+          <Property Name="Remarks3" Type="varchar" MaxLength="100" />
+          <Property Name="Remarks4" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Remarks5" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tblPurchase">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientBillNo" Type="varchar" MaxLength="50" />
+          <Property Name="Date" Type="varchar" MaxLength="50" />
+          <Property Name="VenderID" Type="bigint" />
+          <Property Name="SubMenuID" Type="bigint" />
+          <Property Name="ItemID" Type="bigint" />
+          <Property Name="Quantity" Type="float" />
+          <Property Name="UnitID" Type="bigint" />
+          <Property Name="QtyperUnit" Type="float" />
+          <Property Name="StockQuantity" Type="float" />
+          <Property Name="Rate" Type="float" />
+          <Property Name="Amount" Type="float" />
+          <Property Name="GstRate" Type="float" />
+          <Property Name="GstAmount" Type="float" />
+          <Property Name="TotalAmount" Type="float" />
+          <Property Name="BrandID" Type="bigint" />
+          <Property Name="CategoryID" Type="bigint" />
+          <Property Name="SubCategoryID" Type="bigint" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="StoreID" Type="bigint" />
+          <Property Name="StoreTypeID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tblQty">
+          <Key>
+            <PropertyRef Name="QuantityID" />
+          </Key>
+          <Property Name="QuantityID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryID" Type="bigint" />
+          <Property Name="SubCategoryID" Type="bigint" />
+          <Property Name="Unit" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblReceiveProducts">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Source_storeID" Type="nchar" MaxLength="10" />
+          <Property Name="Destination_storeID" Type="nchar" MaxLength="10" />
+          <Property Name="Product_id" Type="nchar" MaxLength="10" />
+          <Property Name="Quantity" Type="nchar" MaxLength="10" />
+          <Property Name="UnitID" Type="nchar" MaxLength="10" />
+          <Property Name="QuantityperCarton" Type="nchar" MaxLength="10" />
+          <Property Name="StockQTY" Type="nchar" MaxLength="10" />
+          <Property Name="Receive_date" Type="nchar" MaxLength="10" />
+          <Property Name="Received_from" Type="nchar" MaxLength="10" />
+          <Property Name="Transfer_id" Type="nchar" MaxLength="10" />
+          <Property Name="Status" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="tblRequirement">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="500" />
+          <Property Name="ReqDescription" Type="varchar" MaxLength="500" />
+          <Property Name="Date" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="EntryDateTime" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblShipping">
+          <Key>
+            <PropertyRef Name="ShippingID" />
+          </Key>
+          <Property Name="ShippingID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderID" Type="bigint" />
+          <Property Name="ShippingStatus" Type="varchar" MaxLength="50" />
+          <Property Name="TrackingNumber" Type="varchar" MaxLength="100" />
+          <Property Name="EstimatedDeliveryDate" Type="varchar" MaxLength="50" />
+          <Property Name="ShippingDate" Type="varchar" MaxLength="50" />
+          <Property Name="DeliveryDate" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblSizeMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Size_Name" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="tblStateMaster">
+          <Key>
+            <PropertyRef Name="StateID" />
+          </Key>
+          <Property Name="StateID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="State_Name" Type="varchar" MaxLength="100" />
+          <Property Name="State_Status" Type="varchar" MaxLength="50" />
+          <Property Name="Country_ID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tblStore_Master">
+          <Key>
+            <PropertyRef Name="StoreID" />
+          </Key>
+          <Property Name="StoreID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Store_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Store_Address" Type="varchar" MaxLength="200" />
+          <Property Name="Store_Status" Type="varchar" MaxLength="50" />
+          <Property Name="Store_Type" Type="bigint" />
+          <Property Name="Date" Type="varchar" MaxLength="50" />
+          <Property Name="CountryID" Type="bigint" />
+          <Property Name="StateID" Type="bigint" />
+          <Property Name="DistrictID" Type="bigint" />
+          <Property Name="CityID" Type="bigint" />
+          <Property Name="PinCode" Type="bigint" />
+          <Property Name="Store_Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Store_Phone" Type="varchar" MaxLength="50" />
+          <Property Name="Latitude" Type="varchar" MaxLength="50" />
+          <Property Name="Longitude" Type="varchar" MaxLength="50" />
+          <Property Name="Person_Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblStoreTypeMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Store_type" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblstylemaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Style_Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblSubCategoryMaster">
+          <Key>
+            <PropertyRef Name="SubCategoryID" />
+          </Key>
+          <Property Name="SubCategoryID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubCategory_Name" Type="varchar" MaxLength="100" />
+          <Property Name="SubCategory_Status" Type="varchar" MaxLength="50" />
+          <Property Name="CategoryID" Type="bigint" />
+          <Property Name="Date" Type="date" />
+          <Property Name="ImagePath" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="tblSubcategorySlider">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ImagePath" Type="varchar" MaxLength="500" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblSubMenuMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubMenu_Name" Type="varchar" MaxLength="100" />
+          <Property Name="SubCategoryID" Type="bigint" />
+          <Property Name="date" Type="date" />
+          <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CategoryID" Type="bigint" />
+          <Property Name="ImageUrl" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="tblSubMenuSlider">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ImagePath" Type="varchar" MaxLength="500" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblUnitMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Unit_name" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblUserMaster">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_Name" Type="varchar" MaxLength="100" />
+          <Property Name="User_Password" Type="varchar" MaxLength="50" />
+          <Property Name="Date" Type="date" />
+        </EntityType>
+        <EntityType Name="tblVaraintsimages">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VariantID" Type="bigint" />
+          <Property Name="ImageUrl" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="tblVenderMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Vender_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Vender_Email" Type="varchar" MaxLength="50" />
+          <Property Name="Vender_Mobile" Type="varchar" MaxLength="50" />
+          <Property Name="Vender_Address" Type="varchar" MaxLength="200" />
+          <Property Name="VenderGST_no" Type="varchar" MaxLength="50" />
+          <Property Name="Vender_Pincode" Type="varchar" MaxLength="50" />
+          <Property Name="Date" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="CountryID" Type="bigint" />
+          <Property Name="StateID" Type="bigint" />
+          <Property Name="DistrictID" Type="bigint" />
+          <Property Name="CityID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tblwishlist">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="product_id" Type="int" Nullable="false" />
+          <Property Name="added_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="VariantAttributeValues">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VariantID" Type="int" />
+          <Property Name="AttributeID" Type="int" />
+          <Property Name="AttributeValueID" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_Wallet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="bigint" Nullable="false" />
+          <Property Name="TransitionAmount" Type="varchar" MaxLength="200" />
+          <Property Name="TransitionTypes" Type="varchar" MaxLength="200" />
+          <Property Name="TransitionDate" Type="varchar" MaxLength="200" />
+          <Property Name="TransitionStatus" Type="varchar" MaxLength="200" />
+          <Property Name="MemberID" Type="bigint" />
+        </EntityType>
+        <EntityContainer Name="dbzedplusshopModelStoreContainer">
+          <EntitySet Name="Filters" EntityType="Self.Filters" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FilterValues" EntityType="Self.FilterValues" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PayoutDistribution" EntityType="Self.PayoutDistribution" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductVariants" EntityType="Self.ProductVariants" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAddress" EntityType="Self.tblAddress" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblBankMaster" EntityType="Self.tblBankMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblBrandMaster" EntityType="Self.tblBrandMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblBussinessPlan" EntityType="Self.tblBussinessPlan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCareer" EntityType="Self.tblCareer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCart" EntityType="Self.tblCart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCategoryMaster" EntityType="Self.tblCategoryMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCategorySlider" EntityType="Self.tblCategorySlider" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCityMaster" EntityType="Self.tblCityMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblColorMaster" EntityType="Self.tblColorMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCountryMaster" EntityType="Self.tblCountryMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCustomer" EntityType="Self.tblCustomer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCustomerAadharCard" EntityType="Self.tblCustomerAadharCard" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCustomerApply" EntityType="Self.tblCustomerApply" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCustomerBankDetail" EntityType="Self.tblCustomerBankDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCustomerDummy" EntityType="Self.tblCustomerDummy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCustomerPanCard" EntityType="Self.tblCustomerPanCard" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCustomerQuery" EntityType="Self.tblCustomerQuery" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDashboardSlider" EntityType="Self.tblDashboardSlider" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDistrictMaster" EntityType="Self.tblDistrictMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDocumentMaster" EntityType="Self.tblDocumentMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDummyCustdata" EntityType="Self.tblDummyCustdata" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblFabricTypeMaster" EntityType="Self.tblFabricTypeMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblFilterAllotment" EntityType="Self.tblFilterAllotment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblFranchiseRequest" EntityType="Self.tblFranchiseRequest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblGrievance" EntityType="Self.tblGrievance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblHSNmaster" EntityType="Self.tblHSNmaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblIntroducer" EntityType="Self.tblIntroducer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblIntroducerIncome" EntityType="Self.tblIntroducerIncome" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblItemMaster" EntityType="Self.tblItemMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblLegalDocument" EntityType="Self.tblLegalDocument" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblMeetingJoinMembers" EntityType="Self.tblMeetingJoinMembers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblMeetingSchedule" EntityType="Self.tblMeetingSchedule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblMember" EntityType="Self.tblMember" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblMOQmaster" EntityType="Self.tblMOQmaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblNotification" EntityType="Self.tblNotification" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblOrder" EntityType="Self.tblOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblOrderItems" EntityType="Self.tblOrderItems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPackingType" EntityType="Self.tblPackingType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPayment" EntityType="Self.tblPayment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProduct" EntityType="Self.tblProduct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblproductinfo" EntityType="Self.tblproductinfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProductTransfer" EntityType="Self.tblProductTransfer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProductType" EntityType="Self.tblProductType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblpromotionincome" EntityType="Self.tblpromotionincome" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPurchase" EntityType="Self.tblPurchase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblQty" EntityType="Self.tblQty" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblReceiveProducts" EntityType="Self.tblReceiveProducts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblRequirement" EntityType="Self.tblRequirement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblShipping" EntityType="Self.tblShipping" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSizeMaster" EntityType="Self.tblSizeMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblStateMaster" EntityType="Self.tblStateMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblStore_Master" EntityType="Self.tblStore_Master" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblStoreTypeMaster" EntityType="Self.tblStoreTypeMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblstylemaster" EntityType="Self.tblstylemaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSubCategoryMaster" EntityType="Self.tblSubCategoryMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSubcategorySlider" EntityType="Self.tblSubcategorySlider" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSubMenuMaster" EntityType="Self.tblSubMenuMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSubMenuSlider" EntityType="Self.tblSubMenuSlider" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUnitMaster" EntityType="Self.tblUnitMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUserMaster" EntityType="Self.tblUserMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblVaraintsimages" EntityType="Self.tblVaraintsimages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblVenderMaster" EntityType="Self.tblVenderMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblwishlist" EntityType="Self.tblwishlist" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VariantAttributeValues" EntityType="Self.VariantAttributeValues" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Wallet" EntityType="Self.tbl_Wallet" Schema="dbozedpluseshop" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbzedplusshopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="db_zedPlusShopEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Filters" EntityType="dbzedplusshopModel.Filter" />
+          <EntitySet Name="FilterValues" EntityType="dbzedplusshopModel.FilterValue" />
+          <EntitySet Name="PayoutDistributions" EntityType="dbzedplusshopModel.PayoutDistribution" />
+          <EntitySet Name="ProductVariants" EntityType="dbzedplusshopModel.ProductVariant" />
+          <EntitySet Name="tblAddresses" EntityType="dbzedplusshopModel.tblAddress" />
+          <EntitySet Name="tblBankMasters" EntityType="dbzedplusshopModel.tblBankMaster" />
+          <EntitySet Name="tblBrandMasters" EntityType="dbzedplusshopModel.tblBrandMaster" />
+          <EntitySet Name="tblBussinessPlans" EntityType="dbzedplusshopModel.tblBussinessPlan" />
+          <EntitySet Name="tblCareers" EntityType="dbzedplusshopModel.tblCareer" />
+          <EntitySet Name="tblCategoryMasters" EntityType="dbzedplusshopModel.tblCategoryMaster" />
+          <EntitySet Name="tblCategorySliders" EntityType="dbzedplusshopModel.tblCategorySlider" />
+          <EntitySet Name="tblCityMasters" EntityType="dbzedplusshopModel.tblCityMaster" />
+          <EntitySet Name="tblColorMasters" EntityType="dbzedplusshopModel.tblColorMaster" />
+          <EntitySet Name="tblCountryMasters" EntityType="dbzedplusshopModel.tblCountryMaster" />
+          <EntitySet Name="tblCustomers" EntityType="dbzedplusshopModel.tblCustomer" />
+          <EntitySet Name="tblCustomerAadharCards" EntityType="dbzedplusshopModel.tblCustomerAadharCard" />
+          <EntitySet Name="tblCustomerApplies" EntityType="dbzedplusshopModel.tblCustomerApply" />
+          <EntitySet Name="tblCustomerBankDetails" EntityType="dbzedplusshopModel.tblCustomerBankDetail" />
+          <EntitySet Name="tblCustomerDummies" EntityType="dbzedplusshopModel.tblCustomerDummy" />
+          <EntitySet Name="tblCustomerPanCards" EntityType="dbzedplusshopModel.tblCustomerPanCard" />
+          <EntitySet Name="tblCustomerQueries" EntityType="dbzedplusshopModel.tblCustomerQuery" />
+          <EntitySet Name="tblDashboardSliders" EntityType="dbzedplusshopModel.tblDashboardSlider" />
+          <EntitySet Name="tblDistrictMasters" EntityType="dbzedplusshopModel.tblDistrictMaster" />
+          <EntitySet Name="tblDocumentMasters" EntityType="dbzedplusshopModel.tblDocumentMaster" />
+          <EntitySet Name="tblDummyCustdatas" EntityType="dbzedplusshopModel.tblDummyCustdata" />
+          <EntitySet Name="tblFabricTypeMasters" EntityType="dbzedplusshopModel.tblFabricTypeMaster" />
+          <EntitySet Name="tblFilterAllotments" EntityType="dbzedplusshopModel.tblFilterAllotment" />
+          <EntitySet Name="tblFranchiseRequests" EntityType="dbzedplusshopModel.tblFranchiseRequest" />
+          <EntitySet Name="tblGrievances" EntityType="dbzedplusshopModel.tblGrievance" />
+          <EntitySet Name="tblHSNmasters" EntityType="dbzedplusshopModel.tblHSNmaster" />
+          <EntitySet Name="tblIntroducers" EntityType="dbzedplusshopModel.tblIntroducer" />
+          <EntitySet Name="tblIntroducerIncomes" EntityType="dbzedplusshopModel.tblIntroducerIncome" />
+          <EntitySet Name="tblItemMasters" EntityType="dbzedplusshopModel.tblItemMaster" />
+          <EntitySet Name="tblLegalDocuments" EntityType="dbzedplusshopModel.tblLegalDocument" />
+          <EntitySet Name="tblMeetingJoinMembers" EntityType="dbzedplusshopModel.tblMeetingJoinMember" />
+          <EntitySet Name="tblMeetingSchedules" EntityType="dbzedplusshopModel.tblMeetingSchedule" />
+          <EntitySet Name="tblMembers" EntityType="dbzedplusshopModel.tblMember" />
+          <EntitySet Name="tblMOQmasters" EntityType="dbzedplusshopModel.tblMOQmaster" />
+          <EntitySet Name="tblNotifications" EntityType="dbzedplusshopModel.tblNotification" />
+          <EntitySet Name="tblOrders" EntityType="dbzedplusshopModel.tblOrder" />
+          <EntitySet Name="tblOrderItems" EntityType="dbzedplusshopModel.tblOrderItem" />
+          <EntitySet Name="tblPackingTypes" EntityType="dbzedplusshopModel.tblPackingType" />
+          <EntitySet Name="tblPayments" EntityType="dbzedplusshopModel.tblPayment" />
+          <EntitySet Name="tblProducts" EntityType="dbzedplusshopModel.tblProduct" />
+          <EntitySet Name="tblproductinfoes" EntityType="dbzedplusshopModel.tblproductinfo" />
+          <EntitySet Name="tblProductTransfers" EntityType="dbzedplusshopModel.tblProductTransfer" />
+          <EntitySet Name="tblProductTypes" EntityType="dbzedplusshopModel.tblProductType" />
+          <EntitySet Name="tblpromotionincomes" EntityType="dbzedplusshopModel.tblpromotionincome" />
+          <EntitySet Name="tblPurchases" EntityType="dbzedplusshopModel.tblPurchase" />
+          <EntitySet Name="tblQties" EntityType="dbzedplusshopModel.tblQty" />
+          <EntitySet Name="tblReceiveProducts" EntityType="dbzedplusshopModel.tblReceiveProduct" />
+          <EntitySet Name="tblRequirements" EntityType="dbzedplusshopModel.tblRequirement" />
+          <EntitySet Name="tblShippings" EntityType="dbzedplusshopModel.tblShipping" />
+          <EntitySet Name="tblSizeMasters" EntityType="dbzedplusshopModel.tblSizeMaster" />
+          <EntitySet Name="tblStateMasters" EntityType="dbzedplusshopModel.tblStateMaster" />
+          <EntitySet Name="tblStore_Master" EntityType="dbzedplusshopModel.tblStore_Master" />
+          <EntitySet Name="tblStoreTypeMasters" EntityType="dbzedplusshopModel.tblStoreTypeMaster" />
+          <EntitySet Name="tblstylemasters" EntityType="dbzedplusshopModel.tblstylemaster" />
+          <EntitySet Name="tblSubCategoryMasters" EntityType="dbzedplusshopModel.tblSubCategoryMaster" />
+          <EntitySet Name="tblSubcategorySliders" EntityType="dbzedplusshopModel.tblSubcategorySlider" />
+          <EntitySet Name="tblSubMenuMasters" EntityType="dbzedplusshopModel.tblSubMenuMaster" />
+          <EntitySet Name="tblSubMenuSliders" EntityType="dbzedplusshopModel.tblSubMenuSlider" />
+          <EntitySet Name="tblUnitMasters" EntityType="dbzedplusshopModel.tblUnitMaster" />
+          <EntitySet Name="tblUserMasters" EntityType="dbzedplusshopModel.tblUserMaster" />
+          <EntitySet Name="tblVaraintsimages" EntityType="dbzedplusshopModel.tblVaraintsimage" />
+          <EntitySet Name="tblVenderMasters" EntityType="dbzedplusshopModel.tblVenderMaster" />
+          <EntitySet Name="VariantAttributeValues" EntityType="dbzedplusshopModel.VariantAttributeValue" />
+          <EntitySet Name="tbl_Wallet" EntityType="dbzedplusshopModel.tbl_Wallet" />
+          <EntitySet Name="tblCarts" EntityType="dbzedplusshopModel.tblCart" />
+          <EntitySet Name="tblwishlists" EntityType="dbzedplusshopModel.tblwishlist" />
+        </EntityContainer>
+        <EntityType Name="Filter">
+          <Key>
+            <PropertyRef Name="FilterID" />
+          </Key>
+          <Property Name="FilterID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FilterName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SubmenuID" Type="Int64" />
+        </EntityType>
+        <EntityType Name="FilterValue">
+          <Key>
+            <PropertyRef Name="ValueID" />
+          </Key>
+          <Property Name="ValueID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FilterID" Type="Int64" />
+          <Property Name="Value" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PayoutDistribution">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="Int64" />
+          <Property Name="SponsorID" Type="Int64" />
+          <Property Name="Level" Type="Int32" />
+          <Property Name="Amount" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="MainCustomerID" Type="Int64" />
+        </EntityType>
+        <EntityType Name="ProductVariant">
+          <Key>
+            <PropertyRef Name="VariantID" />
+          </Key>
+          <Property Name="VariantID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductID" Type="Int64" />
+          <Property Name="AdditionalPrice" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Stock" Type="Int32" />
+          <Property Name="SKU" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsPrimary" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tblAddress">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryId" Type="Int64" />
+          <Property Name="StateId" Type="Int64" />
+          <Property Name="CityID" Type="Int64" />
+          <Property Name="DistrictId" Type="Int64" />
+          <Property Name="AddressType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+          <Property Name="PinCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerId" Type="Int64" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AlternatePhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tblBankMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Bank_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Bank_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblBrandMaster">
+          <Key>
+            <PropertyRef Name="BrandID" />
+          </Key>
+          <Property Name="BrandID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Brand_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Brand_Image" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Brand_Status" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="tblBussinessPlan">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DocumentUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EntryDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblCareer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Subject" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Resume" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblCategoryMaster">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Category_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Category_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="CategoryImage" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblCategorySlider">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImagePath" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblCityMaster">
+          <Key>
+            <PropertyRef Name="CityID" />
+          </Key>
+          <Property Name="CityID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="City_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="City_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DistrictID" Type="Int64" />
+          <Property Name="PinCode" Type="Int64" />
+        </EntityType>
+        <EntityType Name="tblColorMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Color_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="Status" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblCountryMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Country_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblCustomer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerImage" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerPhone" Type="Int64" />
+          <Property Name="CustomerZIP" Type="Int64" />
+          <Property Name="StateID" Type="Int64" />
+          <Property Name="CityID" Type="Int64" />
+          <Property Name="CustomerLandmark" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerPointValue" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Customer_Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserID" Type="Int64" />
+          <Property Name="DOB" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="pvvlaue" Type="Double" />
+          <Property Name="SponserID" Type="Int64" />
+          <Property Name="Position" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblCustomerAadharCard">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AadharNumder" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerId" Type="Int64" />
+          <Property Name="AadharFrontImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AadharBankImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblCustomerApply">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RequirementID" Type="Int64" />
+          <Property Name="CustomerID" Type="Int64" />
+          <Property Name="FullName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="MobileNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EntryDateTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblCustomerBankDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="Int64" Nullable="false" />
+          <Property Name="FullName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="AccountNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IFSCcode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="BranchName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="BankID" Type="Int64" />
+        </EntityType>
+        <EntityType Name="tblCustomerDummy">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerImage" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerPhone" Type="Int64" />
+          <Property Name="CustomerZIP" Type="Int64" />
+          <Property Name="StateID" Type="Int64" />
+          <Property Name="CityID" Type="Int64" />
+          <Property Name="CustomerLandmark" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerPointValue" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Customer_Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserID" Type="Int64" />
+          <Property Name="DOB" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="pvvlaue" Type="Double" />
+          <Property Name="SponserID" Type="Int64" />
+          <Property Name="Position" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblCustomerPanCard">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="Int64" />
+          <Property Name="PanCardNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PanCardImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblCustomerQuery">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="Int64" />
+          <Property Name="FullName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="EmailID" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Subject" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="EntryDateTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblDashboardSlider">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImagePath" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblDistrictMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DistrictName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="StateID" Type="Int64" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblDocumentMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Document_Name" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+          <Property Name="Document_Path" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblDummyCustdata">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ZEDPLUSID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="superzedplusid" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="mobileno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblFabricTypeMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FabricType" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblFilterAllotment">
+          <Key>
+            <PropertyRef Name="AllotID" />
+          </Key>
+          <Property Name="AllotID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryID" Type="Int64" />
+          <Property Name="SubCategoryID" Type="Int64" />
+          <Property Name="SubMenuID" Type="Int64" />
+          <Property Name="Size" Type="Boolean" />
+          <Property Name="Color" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tblFranchiseRequest">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="Int64" />
+          <Property Name="StoreTypeID" Type="Int64" />
+          <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MobileNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="EntryDateTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblGrievance">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="Int64" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="DocumentPath" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="EntryDateTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblHSNmaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HSN_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SubMenuID" Type="Int64" />
+          <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GST" Type="Double" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblIntroducer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Introducer_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Introducer_Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Introducer_Mobile" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Introducer_Address" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="CustomerID" Type="Int64" Nullable="false" />
+          <Property Name="StateID" Type="Int64" />
+          <Property Name="CityID" Type="Int64" />
+          <Property Name="District" Type="Int64" />
+          <Property Name="PinCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FatherName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CountryId" Type="Int64" />
+          <Property Name="SponsorID" Type="Int64" />
+          <Property Name="PraposerID" Type="Int64" />
+          <Property Name="Introducer_Image" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblIntroducerIncome">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CID" Type="Int64" />
+          <Property Name="UserID" Type="Int64" />
+          <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Amount" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblItemMaster">
+          <Key>
+            <PropertyRef Name="ItemID" />
+          </Key>
+          <Property Name="ItemID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Item_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Item_Image" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Item_Status" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Item_Price" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Item_Detail" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="BrandID" Type="Int64" />
+          <Property Name="CategoryID" Type="Int64" />
+          <Property Name="SubCategoryID" Type="Int64" />
+          <Property Name="SubMenuID" Type="Int64" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="Item_PointValue" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Item_Qty" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Item_Cost" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Item_Discount" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Item_Sizes" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Item_Color" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="MemberPrice" Type="Double" />
+        </EntityType>
+        <EntityType Name="tblLegalDocument">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DocumentName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="DocumentDetail" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="EntryDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblMeetingJoinMember">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="Int64" />
+          <Property Name="MeetingID" Type="Int64" />
+          <Property Name="TotalPersonJoin" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="EntryDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblMeetingSchedule">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MeetingDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MeetingCity" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Location" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Timing" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="EntryDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Latitude" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Longitude" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblMember">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Member_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Member_Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Member_Mobile" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Member_Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="CustomerID" Type="Int64" Nullable="false" />
+          <Property Name="StateID" Type="Int64" />
+          <Property Name="CityID" Type="Int64" />
+          <Property Name="District" Type="Int64" />
+          <Property Name="PinCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UserID" Type="Int64" />
+          <Property Name="FatherName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CountryId" Type="Int64" />
+        </EntityType>
+        <EntityType Name="tblMOQmaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemID" Type="Int64" />
+          <Property Name="MOQQuantity" Type="Int64" />
+          <Property Name="EffectiveDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EntryDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StoreTypeID" Type="Int64" />
+        </EntityType>
+        <EntityType Name="tblNotification">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NotificationDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NotificationTitle" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="NotificationDetail" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="EntryDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerID" Type="Int64" />
+        </EntityType>
+        <EntityType Name="tblOrder">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="Int64" />
+          <Property Name="Itemid" Type="Int64" />
+          <Property Name="VaraintsID" Type="Int64" />
+          <Property Name="TotalPrice" Type="Int64" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="OrderStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="TotalPV" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="AddressId" Type="Int64" />
+          <Property Name="OrderNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PaymentStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblOrderItem">
+          <Key>
+            <PropertyRef Name="OrderItemID" />
+          </Key>
+          <Property Name="OrderItemID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderID" Type="Int64" />
+          <Property Name="ProductID" Type="Int64" />
+          <Property Name="VariantID" Type="Int64" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="Price" Type="Decimal" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="tblPackingType">
+          <Key>
+            <PropertyRef Name="PackingTypeID" />
+          </Key>
+          <Property Name="PackingTypeID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryID" Type="Int64" />
+          <Property Name="SubCategoryID" Type="Int64" />
+          <Property Name="PackingTypeName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SubMenu" Type="Int64" />
+        </EntityType>
+        <EntityType Name="tblPayment">
+          <Key>
+            <PropertyRef Name="PaymentID" />
+          </Key>
+          <Property Name="PaymentID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderID" Type="Int64" />
+          <Property Name="CustomerID" Type="Int64" />
+          <Property Name="PaymentStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PaymentAmount" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="PaymentDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PaymentMethod" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblProduct">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryID" Type="Int64" />
+          <Property Name="SubcategoryID" Type="Int64" />
+          <Property Name="SubMenuID" Type="Int64" />
+          <Property Name="Item_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Stock" Type="Int64" />
+          <Property Name="UnitValue" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UnitID" Type="Int64" />
+          <Property Name="QuantityperCarton" Type="Int64" />
+          <Property Name="MRP" Type="Double" />
+          <Property Name="BasicDiscountType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BasicDiscount" Type="Double" />
+          <Property Name="NRP" Type="Double" />
+          <Property Name="MemberDiscountType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MemberDiscount" Type="Double" />
+          <Property Name="DP" Type="Double" />
+          <Property Name="PV" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="GST" Type="Double" />
+          <Property Name="BARCODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FranchiseType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FranchiseDiscountValue" Type="Double" />
+          <Property Name="FranchiseCommission" Type="Double" />
+          <Property Name="ManagementType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ManagementDiscountValue" Type="Double" />
+          <Property Name="ManagementCommission" Type="Double" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DistributionType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DistributionDiscountValue" Type="Double" />
+          <Property Name="DistributionCommission" Type="Double" />
+          <Property Name="OtherType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OtherDiscountValue" Type="Double" />
+          <Property Name="OtherCommission" Type="Double" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BrandID" Type="Int64" />
+          <Property Name="PackingID" Type="Int64" />
+          <Property Name="HsnCode" Type="Int64" />
+        </EntityType>
+        <EntityType Name="tblproductinfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductID" Type="Int64" Nullable="false" />
+          <Property Name="GTIN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProductOrigin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ManufacturerName" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="WarrantyPeriod" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="NetWeight" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="NetContent" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="GrossWeight" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Tags" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="ReturnPolicy" Type="Boolean" />
+          <Property Name="SKU" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblProductTransfer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="source_storeID" Type="Int64" />
+          <Property Name="destination_storeID" Type="Int64" />
+          <Property Name="Product_id" Type="Int64" />
+          <Property Name="Quantity" Type="Int64" />
+          <Property Name="UnitID" Type="Int64" />
+          <Property Name="QuantityperCarton" Type="Int64" />
+          <Property Name="StockQTY" Type="Int64" />
+          <Property Name="transfer_date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblProductType">
+          <Key>
+            <PropertyRef Name="ProductTypeID" />
+          </Key>
+          <Property Name="ProductTypeID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryID" Type="Int64" />
+          <Property Name="SubCategoryID" Type="Int64" />
+          <Property Name="ProductTypeName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblpromotionincome">
+          <Key>
+            <PropertyRef Name="pid" />
+          </Key>
+          <Property Name="pid" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cid" Type="Int64" />
+          <Property Name="amount1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="amount2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="amount3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="amount4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="amount5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cstatus" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="cdate" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Remarks1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Remarks2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Remarks3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Remarks4" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Remarks5" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblPurchase">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientBillNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VenderID" Type="Int64" />
+          <Property Name="SubMenuID" Type="Int64" />
+          <Property Name="ItemID" Type="Int64" />
+          <Property Name="Quantity" Type="Double" />
+          <Property Name="UnitID" Type="Int64" />
+          <Property Name="QtyperUnit" Type="Double" />
+          <Property Name="StockQuantity" Type="Double" />
+          <Property Name="Rate" Type="Double" />
+          <Property Name="Amount" Type="Double" />
+          <Property Name="GstRate" Type="Double" />
+          <Property Name="GstAmount" Type="Double" />
+          <Property Name="TotalAmount" Type="Double" />
+          <Property Name="BrandID" Type="Int64" />
+          <Property Name="CategoryID" Type="Int64" />
+          <Property Name="SubCategoryID" Type="Int64" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StoreID" Type="Int64" />
+          <Property Name="StoreTypeID" Type="Int64" />
+        </EntityType>
+        <EntityType Name="tblQty">
+          <Key>
+            <PropertyRef Name="QuantityID" />
+          </Key>
+          <Property Name="QuantityID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryID" Type="Int64" />
+          <Property Name="SubCategoryID" Type="Int64" />
+          <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblReceiveProduct">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Source_storeID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Destination_storeID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Product_id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Quantity" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="UnitID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="QuantityperCarton" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="StockQTY" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Receive_date" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Received_from" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Transfer_id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblRequirement">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ReqDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EntryDateTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblShipping">
+          <Key>
+            <PropertyRef Name="ShippingID" />
+          </Key>
+          <Property Name="ShippingID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderID" Type="Int64" />
+          <Property Name="ShippingStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TrackingNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EstimatedDeliveryDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ShippingDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DeliveryDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblSizeMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Size_Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblStateMaster">
+          <Key>
+            <PropertyRef Name="StateID" />
+          </Key>
+          <Property Name="StateID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="State_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="State_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Country_ID" Type="Int64" />
+        </EntityType>
+        <EntityType Name="tblStore_Master">
+          <Key>
+            <PropertyRef Name="StoreID" />
+          </Key>
+          <Property Name="StoreID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Store_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Store_Address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Store_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Store_Type" Type="Int64" />
+          <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CountryID" Type="Int64" />
+          <Property Name="StateID" Type="Int64" />
+          <Property Name="DistrictID" Type="Int64" />
+          <Property Name="CityID" Type="Int64" />
+          <Property Name="PinCode" Type="Int64" />
+          <Property Name="Store_Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Store_Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Latitude" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Longitude" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Person_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblStoreTypeMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Store_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblstylemaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Style_Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblSubCategoryMaster">
+          <Key>
+            <PropertyRef Name="SubCategoryID" />
+          </Key>
+          <Property Name="SubCategoryID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubCategory_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SubCategory_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryID" Type="Int64" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="ImagePath" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblSubcategorySlider">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImagePath" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblSubMenuMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubMenu_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SubCategoryID" Type="Int64" />
+          <Property Name="date" Type="DateTime" Precision="0" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryID" Type="Int64" />
+          <Property Name="ImageUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblSubMenuSlider">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImagePath" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblUnitMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Unit_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblUserMaster">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="User_Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="tblVaraintsimage">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VariantID" Type="Int64" />
+          <Property Name="ImageUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblVenderMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Vender_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Vender_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Vender_Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Vender_Address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="VenderGST_no" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Vender_Pincode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CountryID" Type="Int64" />
+          <Property Name="StateID" Type="Int64" />
+          <Property Name="DistrictID" Type="Int64" />
+          <Property Name="CityID" Type="Int64" />
+        </EntityType>
+        <EntityType Name="VariantAttributeValue">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VariantID" Type="Int32" />
+          <Property Name="AttributeID" Type="Int32" />
+          <Property Name="AttributeValueID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbl_Wallet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int64" Nullable="false" />
+          <Property Name="TransitionAmount" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="TransitionTypes" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="TransitionDate" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="TransitionStatus" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="MemberID" Type="Int64" />
+        </EntityType>
+        <EntityType Name="tblCart">
+          <Key>
+            <PropertyRef Name="CartID" />
+          </Key>
+          <Property Name="CartID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="Int64" />
+          <Property Name="ItemID" Type="Int64" />
+          <Property Name="SizeID" Type="Int64" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="TotalPice" Type="Int64" />
+          <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VarientId" Type="Int64" />
+        </EntityType>
+        <EntityType Name="tblwishlist">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="product_id" Type="Int32" Nullable="false" />
+          <Property Name="added_at" Type="DateTime" Precision="3" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbzedplusshopModelStoreContainer" CdmEntityContainer="db_zedPlusShopEntities">
+          <EntitySetMapping Name="Filters">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.Filter">
+              <MappingFragment StoreEntitySet="Filters">
+                <ScalarProperty Name="SubmenuID" ColumnName="SubmenuID" />
+                <ScalarProperty Name="FilterName" ColumnName="FilterName" />
+                <ScalarProperty Name="FilterID" ColumnName="FilterID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FilterValues">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.FilterValue">
+              <MappingFragment StoreEntitySet="FilterValues">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="FilterID" ColumnName="FilterID" />
+                <ScalarProperty Name="ValueID" ColumnName="ValueID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PayoutDistributions">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.PayoutDistribution">
+              <MappingFragment StoreEntitySet="PayoutDistribution">
+                <ScalarProperty Name="MainCustomerID" ColumnName="MainCustomerID" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="SponsorID" ColumnName="SponsorID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductVariants">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.ProductVariant">
+              <MappingFragment StoreEntitySet="ProductVariants">
+                <ScalarProperty Name="IsPrimary" ColumnName="IsPrimary" />
+                <ScalarProperty Name="SKU" ColumnName="SKU" />
+                <ScalarProperty Name="Stock" ColumnName="Stock" />
+                <ScalarProperty Name="AdditionalPrice" ColumnName="AdditionalPrice" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="VariantID" ColumnName="VariantID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAddresses">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblAddress">
+              <MappingFragment StoreEntitySet="tblAddress">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="AlternatePhone" ColumnName="AlternatePhone" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="PinCode" ColumnName="PinCode" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="AddressType" ColumnName="AddressType" />
+                <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblBankMasters">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblBankMaster">
+              <MappingFragment StoreEntitySet="tblBankMaster">
+                <ScalarProperty Name="Bank_Status" ColumnName="Bank_Status" />
+                <ScalarProperty Name="Bank_name" ColumnName="Bank_name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblBrandMasters">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblBrandMaster">
+              <MappingFragment StoreEntitySet="tblBrandMaster">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Brand_Status" ColumnName="Brand_Status" />
+                <ScalarProperty Name="Brand_Image" ColumnName="Brand_Image" />
+                <ScalarProperty Name="Brand_Name" ColumnName="Brand_Name" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblBussinessPlans">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblBussinessPlan">
+              <MappingFragment StoreEntitySet="tblBussinessPlan">
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="DocumentUrl" ColumnName="DocumentUrl" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCareers">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblCareer">
+              <MappingFragment StoreEntitySet="tblCareer">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Resume" ColumnName="Resume" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCategoryMasters">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblCategoryMaster">
+              <MappingFragment StoreEntitySet="tblCategoryMaster">
+                <ScalarProperty Name="CategoryImage" ColumnName="CategoryImage" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Category_Status" ColumnName="Category_Status" />
+                <ScalarProperty Name="Category_Name" ColumnName="Category_Name" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCategorySliders">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblCategorySlider">
+              <MappingFragment StoreEntitySet="tblCategorySlider">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCityMasters">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblCityMaster">
+              <MappingFragment StoreEntitySet="tblCityMaster">
+                <ScalarProperty Name="PinCode" ColumnName="PinCode" />
+                <ScalarProperty Name="DistrictID" ColumnName="DistrictID" />
+                <ScalarProperty Name="City_Status" ColumnName="City_Status" />
+                <ScalarProperty Name="City_Name" ColumnName="City_Name" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblColorMasters">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblColorMaster">
+              <MappingFragment StoreEntitySet="tblColorMaster">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Color_Name" ColumnName="Color_Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCountryMasters">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblCountryMaster">
+              <MappingFragment StoreEntitySet="tblCountryMaster">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Country_Name" ColumnName="Country_Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCustomers">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblCustomer">
+              <MappingFragment StoreEntitySet="tblCustomer">
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="SponserID" ColumnName="SponserID" />
+                <ScalarProperty Name="pvvlaue" ColumnName="pvvlaue" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Customer_Gender" ColumnName="Customer_Gender" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CustomerPointValue" ColumnName="CustomerPointValue" />
+                <ScalarProperty Name="CustomerLandmark" ColumnName="CustomerLandmark" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+                <ScalarProperty Name="CustomerZIP" ColumnName="CustomerZIP" />
+                <ScalarProperty Name="CustomerPhone" ColumnName="CustomerPhone" />
+                <ScalarProperty Name="CustomerAddress" ColumnName="CustomerAddress" />
+                <ScalarProperty Name="CustomerImage" ColumnName="CustomerImage" />
+                <ScalarProperty Name="CustomerPassword" ColumnName="CustomerPassword" />
+                <ScalarProperty Name="CustomerEmail" ColumnName="CustomerEmail" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCustomerAadharCards">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblCustomerAadharCard">
+              <MappingFragment StoreEntitySet="tblCustomerAadharCard">
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="AadharBankImage" ColumnName="AadharBankImage" />
+                <ScalarProperty Name="AadharFrontImage" ColumnName="AadharFrontImage" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="AadharNumder" ColumnName="AadharNumder" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCustomerApplies">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblCustomerApply">
+              <MappingFragment StoreEntitySet="tblCustomerApply">
+                <ScalarProperty Name="EntryDateTime" ColumnName="EntryDateTime" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="RequirementID" ColumnName="RequirementID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCustomerBankDetails">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblCustomerBankDetail">
+              <MappingFragment StoreEntitySet="tblCustomerBankDetail">
+                <ScalarProperty Name="BankID" ColumnName="BankID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+                <ScalarProperty Name="IFSCcode" ColumnName="IFSCcode" />
+                <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCustomerDummies">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblCustomerDummy">
+              <MappingFragment StoreEntitySet="tblCustomerDummy">
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="SponserID" ColumnName="SponserID" />
+                <ScalarProperty Name="pvvlaue" ColumnName="pvvlaue" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Customer_Gender" ColumnName="Customer_Gender" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CustomerPointValue" ColumnName="CustomerPointValue" />
+                <ScalarProperty Name="CustomerLandmark" ColumnName="CustomerLandmark" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+                <ScalarProperty Name="CustomerZIP" ColumnName="CustomerZIP" />
+                <ScalarProperty Name="CustomerPhone" ColumnName="CustomerPhone" />
+                <ScalarProperty Name="CustomerAddress" ColumnName="CustomerAddress" />
+                <ScalarProperty Name="CustomerImage" ColumnName="CustomerImage" />
+                <ScalarProperty Name="CustomerPassword" ColumnName="CustomerPassword" />
+                <ScalarProperty Name="CustomerEmail" ColumnName="CustomerEmail" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCustomerPanCards">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblCustomerPanCard">
+              <MappingFragment StoreEntitySet="tblCustomerPanCard">
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="PanCardImage" ColumnName="PanCardImage" />
+                <ScalarProperty Name="PanCardNumber" ColumnName="PanCardNumber" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCustomerQueries">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblCustomerQuery">
+              <MappingFragment StoreEntitySet="tblCustomerQuery">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="EntryDateTime" ColumnName="EntryDateTime" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDashboardSliders">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblDashboardSlider">
+              <MappingFragment StoreEntitySet="tblDashboardSlider">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDistrictMasters">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblDistrictMaster">
+              <MappingFragment StoreEntitySet="tblDistrictMaster">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+                <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDocumentMasters">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblDocumentMaster">
+              <MappingFragment StoreEntitySet="tblDocumentMaster">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Document_Path" ColumnName="Document_Path" />
+                <ScalarProperty Name="Document_Name" ColumnName="Document_Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDummyCustdatas">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblDummyCustdata">
+              <MappingFragment StoreEntitySet="tblDummyCustdata">
+                <ScalarProperty Name="mobileno" ColumnName="mobileno" />
+                <ScalarProperty Name="superzedplusid" ColumnName="superzedplusid" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ZEDPLUSID" ColumnName="ZEDPLUSID" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblFabricTypeMasters">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblFabricTypeMaster">
+              <MappingFragment StoreEntitySet="tblFabricTypeMaster">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="FabricType" ColumnName="FabricType" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblFilterAllotments">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblFilterAllotment">
+              <MappingFragment StoreEntitySet="tblFilterAllotment">
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="SubMenuID" ColumnName="SubMenuID" />
+                <ScalarProperty Name="SubCategoryID" ColumnName="SubCategoryID" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="AllotID" ColumnName="AllotID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblFranchiseRequests">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblFranchiseRequest">
+              <MappingFragment StoreEntitySet="tblFranchiseRequest">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="EntryDateTime" ColumnName="EntryDateTime" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="StoreTypeID" ColumnName="StoreTypeID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblGrievances">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblGrievance">
+              <MappingFragment StoreEntitySet="tblGrievance">
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="EntryDateTime" ColumnName="EntryDateTime" />
+                <ScalarProperty Name="DocumentPath" ColumnName="DocumentPath" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblHSNmasters">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblHSNmaster">
+              <MappingFragment StoreEntitySet="tblHSNmaster">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="GST" ColumnName="GST" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="SubMenuID" ColumnName="SubMenuID" />
+                <ScalarProperty Name="HSN_code" ColumnName="HSN_code" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblIntroducers">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblIntroducer">
+              <MappingFragment StoreEntitySet="tblIntroducer">
+                <ScalarProperty Name="Introducer_Image" ColumnName="Introducer_Image" />
+                <ScalarProperty Name="PraposerID" ColumnName="PraposerID" />
+                <ScalarProperty Name="SponsorID" ColumnName="SponsorID" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="PinCode" ColumnName="PinCode" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Introducer_Address" ColumnName="Introducer_Address" />
+                <ScalarProperty Name="Introducer_Mobile" ColumnName="Introducer_Mobile" />
+                <ScalarProperty Name="Introducer_Email" ColumnName="Introducer_Email" />
+                <ScalarProperty Name="Introducer_Name" ColumnName="Introducer_Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblIntroducerIncomes">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblIntroducerIncome">
+              <MappingFragment StoreEntitySet="tblIntroducerIncome">
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblItemMasters">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblItemMaster">
+              <MappingFragment StoreEntitySet="tblItemMaster">
+                <ScalarProperty Name="MemberPrice" ColumnName="MemberPrice" />
+                <ScalarProperty Name="Item_Color" ColumnName="Item_Color" />
+                <ScalarProperty Name="Item_Sizes" ColumnName="Item_Sizes" />
+                <ScalarProperty Name="Item_Discount" ColumnName="Item_Discount" />
+                <ScalarProperty Name="Item_Cost" ColumnName="Item_Cost" />
+                <ScalarProperty Name="Item_Qty" ColumnName="Item_Qty" />
+                <ScalarProperty Name="Item_PointValue" ColumnName="Item_PointValue" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="SubMenuID" ColumnName="SubMenuID" />
+                <ScalarProperty Name="SubCategoryID" ColumnName="SubCategoryID" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="Item_Detail" ColumnName="Item_Detail" />
+                <ScalarProperty Name="Item_Price" ColumnName="Item_Price" />
+                <ScalarProperty Name="Item_Status" ColumnName="Item_Status" />
+                <ScalarProperty Name="Item_Image" ColumnName="Item_Image" />
+                <ScalarProperty Name="Item_Name" ColumnName="Item_Name" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblLegalDocuments">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblLegalDocument">
+              <MappingFragment StoreEntitySet="tblLegalDocument">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="DocumentDetail" ColumnName="DocumentDetail" />
+                <ScalarProperty Name="DocumentName" ColumnName="DocumentName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblMeetingJoinMembers">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblMeetingJoinMember">
+              <MappingFragment StoreEntitySet="tblMeetingJoinMembers">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="TotalPersonJoin" ColumnName="TotalPersonJoin" />
+                <ScalarProperty Name="MeetingID" ColumnName="MeetingID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblMeetingSchedules">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblMeetingSchedule">
+              <MappingFragment StoreEntitySet="tblMeetingSchedule">
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="Timing" ColumnName="Timing" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="MeetingCity" ColumnName="MeetingCity" />
+                <ScalarProperty Name="MeetingDate" ColumnName="MeetingDate" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblMembers">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblMember">
+              <MappingFragment StoreEntitySet="tblMember">
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="PinCode" ColumnName="PinCode" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Member_Address" ColumnName="Member_Address" />
+                <ScalarProperty Name="Member_Mobile" ColumnName="Member_Mobile" />
+                <ScalarProperty Name="Member_Email" ColumnName="Member_Email" />
+                <ScalarProperty Name="Member_Name" ColumnName="Member_Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblMOQmasters">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblMOQmaster">
+              <MappingFragment StoreEntitySet="tblMOQmaster">
+                <ScalarProperty Name="StoreTypeID" ColumnName="StoreTypeID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="EffectiveDate" ColumnName="EffectiveDate" />
+                <ScalarProperty Name="MOQQuantity" ColumnName="MOQQuantity" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblNotifications">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblNotification">
+              <MappingFragment StoreEntitySet="tblNotification">
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="NotificationDetail" ColumnName="NotificationDetail" />
+                <ScalarProperty Name="NotificationTitle" ColumnName="NotificationTitle" />
+                <ScalarProperty Name="NotificationDate" ColumnName="NotificationDate" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOrders">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblOrder">
+              <MappingFragment StoreEntitySet="tblOrder">
+                <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
+                <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+                <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+                <ScalarProperty Name="TotalPV" ColumnName="TotalPV" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="VaraintsID" ColumnName="VaraintsID" />
+                <ScalarProperty Name="Itemid" ColumnName="Itemid" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOrderItems">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblOrderItem">
+              <MappingFragment StoreEntitySet="tblOrderItems">
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="VariantID" ColumnName="VariantID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="OrderItemID" ColumnName="OrderItemID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPackingTypes">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblPackingType">
+              <MappingFragment StoreEntitySet="tblPackingType">
+                <ScalarProperty Name="SubMenu" ColumnName="SubMenu" />
+                <ScalarProperty Name="PackingTypeName" ColumnName="PackingTypeName" />
+                <ScalarProperty Name="SubCategoryID" ColumnName="SubCategoryID" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="PackingTypeID" ColumnName="PackingTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPayments">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblPayment">
+              <MappingFragment StoreEntitySet="tblPayment">
+                <ScalarProperty Name="PaymentMethod" ColumnName="PaymentMethod" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="PaymentAmount" ColumnName="PaymentAmount" />
+                <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="PaymentID" ColumnName="PaymentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProducts">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblProduct">
+              <MappingFragment StoreEntitySet="tblProduct">
+                <ScalarProperty Name="HsnCode" ColumnName="HsnCode" />
+                <ScalarProperty Name="PackingID" ColumnName="PackingID" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="OtherCommission" ColumnName="OtherCommission" />
+                <ScalarProperty Name="OtherDiscountValue" ColumnName="OtherDiscountValue" />
+                <ScalarProperty Name="OtherType" ColumnName="OtherType" />
+                <ScalarProperty Name="DistributionCommission" ColumnName="DistributionCommission" />
+                <ScalarProperty Name="DistributionDiscountValue" ColumnName="DistributionDiscountValue" />
+                <ScalarProperty Name="DistributionType" ColumnName="DistributionType" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ManagementCommission" ColumnName="ManagementCommission" />
+                <ScalarProperty Name="ManagementDiscountValue" ColumnName="ManagementDiscountValue" />
+                <ScalarProperty Name="ManagementType" ColumnName="ManagementType" />
+                <ScalarProperty Name="FranchiseCommission" ColumnName="FranchiseCommission" />
+                <ScalarProperty Name="FranchiseDiscountValue" ColumnName="FranchiseDiscountValue" />
+                <ScalarProperty Name="FranchiseType" ColumnName="FranchiseType" />
+                <ScalarProperty Name="BARCODE" ColumnName="BARCODE" />
+                <ScalarProperty Name="GST" ColumnName="GST" />
+                <ScalarProperty Name="PV" ColumnName="PV" />
+                <ScalarProperty Name="DP" ColumnName="DP" />
+                <ScalarProperty Name="MemberDiscount" ColumnName="MemberDiscount" />
+                <ScalarProperty Name="MemberDiscountType" ColumnName="MemberDiscountType" />
+                <ScalarProperty Name="NRP" ColumnName="NRP" />
+                <ScalarProperty Name="BasicDiscount" ColumnName="BasicDiscount" />
+                <ScalarProperty Name="BasicDiscountType" ColumnName="BasicDiscountType" />
+                <ScalarProperty Name="MRP" ColumnName="MRP" />
+                <ScalarProperty Name="QuantityperCarton" ColumnName="QuantityperCarton" />
+                <ScalarProperty Name="UnitID" ColumnName="UnitID" />
+                <ScalarProperty Name="UnitValue" ColumnName="UnitValue" />
+                <ScalarProperty Name="Stock" ColumnName="Stock" />
+                <ScalarProperty Name="Item_Name" ColumnName="Item_Name" />
+                <ScalarProperty Name="SubMenuID" ColumnName="SubMenuID" />
+                <ScalarProperty Name="SubcategoryID" ColumnName="SubcategoryID" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblproductinfoes">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblproductinfo">
+              <MappingFragment StoreEntitySet="tblproductinfo">
+                <ScalarProperty Name="SKU" ColumnName="SKU" />
+                <ScalarProperty Name="ReturnPolicy" ColumnName="ReturnPolicy" />
+                <ScalarProperty Name="Tags" ColumnName="Tags" />
+                <ScalarProperty Name="GrossWeight" ColumnName="GrossWeight" />
+                <ScalarProperty Name="NetContent" ColumnName="NetContent" />
+                <ScalarProperty Name="NetWeight" ColumnName="NetWeight" />
+                <ScalarProperty Name="WarrantyPeriod" ColumnName="WarrantyPeriod" />
+                <ScalarProperty Name="ManufacturerName" ColumnName="ManufacturerName" />
+                <ScalarProperty Name="ProductOrigin" ColumnName="ProductOrigin" />
+                <ScalarProperty Name="GTIN" ColumnName="GTIN" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProductTransfers">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblProductTransfer">
+              <MappingFragment StoreEntitySet="tblProductTransfer">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="transfer_date" ColumnName="transfer_date" />
+                <ScalarProperty Name="StockQTY" ColumnName="StockQTY" />
+                <ScalarProperty Name="QuantityperCarton" ColumnName="QuantityperCarton" />
+                <ScalarProperty Name="UnitID" ColumnName="UnitID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Product_id" ColumnName="Product_id" />
+                <ScalarProperty Name="destination_storeID" ColumnName="destination_storeID" />
+                <ScalarProperty Name="source_storeID" ColumnName="source_storeID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProductTypes">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblProductType">
+              <MappingFragment StoreEntitySet="tblProductType">
+                <ScalarProperty Name="ProductTypeName" ColumnName="ProductTypeName" />
+                <ScalarProperty Name="SubCategoryID" ColumnName="SubCategoryID" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="ProductTypeID" ColumnName="ProductTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblpromotionincomes">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblpromotionincome">
+              <MappingFragment StoreEntitySet="tblpromotionincome">
+                <ScalarProperty Name="Remarks5" ColumnName="Remarks5" />
+                <ScalarProperty Name="Remarks4" ColumnName="Remarks4" />
+                <ScalarProperty Name="Remarks3" ColumnName="Remarks3" />
+                <ScalarProperty Name="Remarks2" ColumnName="Remarks2" />
+                <ScalarProperty Name="Remarks1" ColumnName="Remarks1" />
+                <ScalarProperty Name="cdate" ColumnName="cdate" />
+                <ScalarProperty Name="cstatus" ColumnName="cstatus" />
+                <ScalarProperty Name="amount5" ColumnName="amount5" />
+                <ScalarProperty Name="amount4" ColumnName="amount4" />
+                <ScalarProperty Name="amount3" ColumnName="amount3" />
+                <ScalarProperty Name="amount2" ColumnName="amount2" />
+                <ScalarProperty Name="amount1" ColumnName="amount1" />
+                <ScalarProperty Name="cid" ColumnName="cid" />
+                <ScalarProperty Name="pid" ColumnName="pid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPurchases">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblPurchase">
+              <MappingFragment StoreEntitySet="tblPurchase">
+                <ScalarProperty Name="StoreTypeID" ColumnName="StoreTypeID" />
+                <ScalarProperty Name="StoreID" ColumnName="StoreID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="SubCategoryID" ColumnName="SubCategoryID" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="GstAmount" ColumnName="GstAmount" />
+                <ScalarProperty Name="GstRate" ColumnName="GstRate" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="StockQuantity" ColumnName="StockQuantity" />
+                <ScalarProperty Name="QtyperUnit" ColumnName="QtyperUnit" />
+                <ScalarProperty Name="UnitID" ColumnName="UnitID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="SubMenuID" ColumnName="SubMenuID" />
+                <ScalarProperty Name="VenderID" ColumnName="VenderID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="ClientBillNo" ColumnName="ClientBillNo" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblQties">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblQty">
+              <MappingFragment StoreEntitySet="tblQty">
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="SubCategoryID" ColumnName="SubCategoryID" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="QuantityID" ColumnName="QuantityID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblReceiveProducts">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblReceiveProduct">
+              <MappingFragment StoreEntitySet="tblReceiveProducts">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Transfer_id" ColumnName="Transfer_id" />
+                <ScalarProperty Name="Received_from" ColumnName="Received_from" />
+                <ScalarProperty Name="Receive_date" ColumnName="Receive_date" />
+                <ScalarProperty Name="StockQTY" ColumnName="StockQTY" />
+                <ScalarProperty Name="QuantityperCarton" ColumnName="QuantityperCarton" />
+                <ScalarProperty Name="UnitID" ColumnName="UnitID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Product_id" ColumnName="Product_id" />
+                <ScalarProperty Name="Destination_storeID" ColumnName="Destination_storeID" />
+                <ScalarProperty Name="Source_storeID" ColumnName="Source_storeID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblRequirements">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblRequirement">
+              <MappingFragment StoreEntitySet="tblRequirement">
+                <ScalarProperty Name="EntryDateTime" ColumnName="EntryDateTime" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="ReqDescription" ColumnName="ReqDescription" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblShippings">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblShipping">
+              <MappingFragment StoreEntitySet="tblShipping">
+                <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+                <ScalarProperty Name="ShippingDate" ColumnName="ShippingDate" />
+                <ScalarProperty Name="EstimatedDeliveryDate" ColumnName="EstimatedDeliveryDate" />
+                <ScalarProperty Name="TrackingNumber" ColumnName="TrackingNumber" />
+                <ScalarProperty Name="ShippingStatus" ColumnName="ShippingStatus" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="ShippingID" ColumnName="ShippingID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSizeMasters">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblSizeMaster">
+              <MappingFragment StoreEntitySet="tblSizeMaster">
+                <ScalarProperty Name="Size_Name" ColumnName="Size_Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblStateMasters">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblStateMaster">
+              <MappingFragment StoreEntitySet="tblStateMaster">
+                <ScalarProperty Name="Country_ID" ColumnName="Country_ID" />
+                <ScalarProperty Name="State_Status" ColumnName="State_Status" />
+                <ScalarProperty Name="State_Name" ColumnName="State_Name" />
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblStore_Master">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblStore_Master">
+              <MappingFragment StoreEntitySet="tblStore_Master">
+                <ScalarProperty Name="Person_Name" ColumnName="Person_Name" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Store_Phone" ColumnName="Store_Phone" />
+                <ScalarProperty Name="Store_Email" ColumnName="Store_Email" />
+                <ScalarProperty Name="PinCode" ColumnName="PinCode" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="DistrictID" ColumnName="DistrictID" />
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Store_Type" ColumnName="Store_Type" />
+                <ScalarProperty Name="Store_Status" ColumnName="Store_Status" />
+                <ScalarProperty Name="Store_Address" ColumnName="Store_Address" />
+                <ScalarProperty Name="Store_Name" ColumnName="Store_Name" />
+                <ScalarProperty Name="StoreID" ColumnName="StoreID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblStoreTypeMasters">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblStoreTypeMaster">
+              <MappingFragment StoreEntitySet="tblStoreTypeMaster">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Store_type" ColumnName="Store_type" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblstylemasters">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblstylemaster">
+              <MappingFragment StoreEntitySet="tblstylemaster">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Style_Name" ColumnName="Style_Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSubCategoryMasters">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblSubCategoryMaster">
+              <MappingFragment StoreEntitySet="tblSubCategoryMaster">
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="SubCategory_Status" ColumnName="SubCategory_Status" />
+                <ScalarProperty Name="SubCategory_Name" ColumnName="SubCategory_Name" />
+                <ScalarProperty Name="SubCategoryID" ColumnName="SubCategoryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSubcategorySliders">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblSubcategorySlider">
+              <MappingFragment StoreEntitySet="tblSubcategorySlider">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSubMenuMasters">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblSubMenuMaster">
+              <MappingFragment StoreEntitySet="tblSubMenuMaster">
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="SubCategoryID" ColumnName="SubCategoryID" />
+                <ScalarProperty Name="SubMenu_Name" ColumnName="SubMenu_Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSubMenuSliders">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblSubMenuSlider">
+              <MappingFragment StoreEntitySet="tblSubMenuSlider">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUnitMasters">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblUnitMaster">
+              <MappingFragment StoreEntitySet="tblUnitMaster">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Unit_name" ColumnName="Unit_name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUserMasters">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblUserMaster">
+              <MappingFragment StoreEntitySet="tblUserMaster">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="User_Password" ColumnName="User_Password" />
+                <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblVaraintsimages">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblVaraintsimage">
+              <MappingFragment StoreEntitySet="tblVaraintsimages">
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="VariantID" ColumnName="VariantID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblVenderMasters">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblVenderMaster">
+              <MappingFragment StoreEntitySet="tblVenderMaster">
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="DistrictID" ColumnName="DistrictID" />
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Vender_Pincode" ColumnName="Vender_Pincode" />
+                <ScalarProperty Name="VenderGST_no" ColumnName="VenderGST_no" />
+                <ScalarProperty Name="Vender_Address" ColumnName="Vender_Address" />
+                <ScalarProperty Name="Vender_Mobile" ColumnName="Vender_Mobile" />
+                <ScalarProperty Name="Vender_Email" ColumnName="Vender_Email" />
+                <ScalarProperty Name="Vender_Name" ColumnName="Vender_Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VariantAttributeValues">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.VariantAttributeValue">
+              <MappingFragment StoreEntitySet="VariantAttributeValues">
+                <ScalarProperty Name="AttributeValueID" ColumnName="AttributeValueID" />
+                <ScalarProperty Name="AttributeID" ColumnName="AttributeID" />
+                <ScalarProperty Name="VariantID" ColumnName="VariantID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Wallet">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tbl_Wallet">
+              <MappingFragment StoreEntitySet="tbl_Wallet">
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="TransitionStatus" ColumnName="TransitionStatus" />
+                <ScalarProperty Name="TransitionDate" ColumnName="TransitionDate" />
+                <ScalarProperty Name="TransitionTypes" ColumnName="TransitionTypes" />
+                <ScalarProperty Name="TransitionAmount" ColumnName="TransitionAmount" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCarts">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblCart">
+              <MappingFragment StoreEntitySet="tblCart">
+                <ScalarProperty Name="VarientId" ColumnName="VarientId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="TotalPice" ColumnName="TotalPice" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="SizeID" ColumnName="SizeID" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="CartID" ColumnName="CartID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblwishlists">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblwishlist">
+              <MappingFragment StoreEntitySet="tblwishlist">
+                <ScalarProperty Name="added_at" ColumnName="added_at" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
