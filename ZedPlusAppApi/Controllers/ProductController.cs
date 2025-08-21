@@ -19,7 +19,7 @@ namespace ZedPlusAppApi.Controllers
             ProductResponse resp = new ProductResponse();
             List<ProductVM> mdl = new List<ProductVM>();
             try
-            {
+            {   //Products
                 db_zedPlusShopEntities db = new db_zedPlusShopEntities();
                 if (SubMenuId == 0 && SubCategoryId == 0 && CategoryId == 0)
                 {
