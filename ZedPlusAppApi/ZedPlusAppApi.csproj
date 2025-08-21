@@ -236,12 +236,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dbZedPlus.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Filter.cs">
-      <DependentUpon>dbZedPlus.tt</DependentUpon>
-    </Compile>
-    <Compile Include="FilterValue.cs">
-      <DependentUpon>dbZedPlus.tt</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -352,9 +346,6 @@
     <Compile Include="PayoutDistribution.cs">
       <DependentUpon>dbZedPlus.tt</DependentUpon>
     </Compile>
-    <Compile Include="ProductVariant.cs">
-      <DependentUpon>dbZedPlus.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="tblAddress.cs">
       <DependentUpon>dbZedPlus.tt</DependentUpon>
@@ -383,9 +374,6 @@
     <Compile Include="tblCityMaster.cs">
       <DependentUpon>dbZedPlus.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblColorMaster.cs">
-      <DependentUpon>dbZedPlus.tt</DependentUpon>
-    </Compile>
     <Compile Include="tblCountryMaster.cs">
       <DependentUpon>dbZedPlus.tt</DependentUpon>
     </Compile>
@@ -407,9 +395,6 @@
     <Compile Include="tblCustomerPanCard.cs">
       <DependentUpon>dbZedPlus.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblCustomerQuery.cs">
-      <DependentUpon>dbZedPlus.tt</DependentUpon>
-    </Compile>
     <Compile Include="tblDashboardSlider.cs">
       <DependentUpon>dbZedPlus.tt</DependentUpon>
     </Compile>
@@ -417,9 +402,6 @@
       <DependentUpon>dbZedPlus.tt</DependentUpon>
     </Compile>
     <Compile Include="tblDocumentMaster.cs">
-      <DependentUpon>dbZedPlus.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tblDummyCustdata.cs">
       <DependentUpon>dbZedPlus.tt</DependentUpon>
     </Compile>
     <Compile Include="tblFabricTypeMaster.cs">
@@ -467,9 +449,6 @@
     <Compile Include="tblOrder.cs">
       <DependentUpon>dbZedPlus.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblOrderItem.cs">
-      <DependentUpon>dbZedPlus.tt</DependentUpon>
-    </Compile>
     <Compile Include="tblPackingType.cs">
       <DependentUpon>dbZedPlus.tt</DependentUpon>
     </Compile>
@@ -479,25 +458,10 @@
     <Compile Include="tblProduct.cs">
       <DependentUpon>dbZedPlus.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblproductinfo.cs">
-      <DependentUpon>dbZedPlus.tt</DependentUpon>
-    </Compile>
     <Compile Include="tblProductTransfer.cs">
       <DependentUpon>dbZedPlus.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblProductType.cs">
-      <DependentUpon>dbZedPlus.tt</DependentUpon>
-    </Compile>
     <Compile Include="tblpromotionincome.cs">
-      <DependentUpon>dbZedPlus.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tblPurchase.cs">
-      <DependentUpon>dbZedPlus.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tblQty.cs">
-      <DependentUpon>dbZedPlus.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tblReceiveProduct.cs">
       <DependentUpon>dbZedPlus.tt</DependentUpon>
     </Compile>
     <Compile Include="tblRequirement.cs">
@@ -506,19 +470,16 @@
     <Compile Include="tblShipping.cs">
       <DependentUpon>dbZedPlus.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblSizeMaster.cs">
+    <Compile Include="tblStateMaster.cs">
       <DependentUpon>dbZedPlus.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblStateMaster.cs">
+    <Compile Include="tblStockEntry.cs">
       <DependentUpon>dbZedPlus.tt</DependentUpon>
     </Compile>
     <Compile Include="tblStoreTypeMaster.cs">
       <DependentUpon>dbZedPlus.tt</DependentUpon>
     </Compile>
     <Compile Include="tblStore_Master.cs">
-      <DependentUpon>dbZedPlus.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tblstylemaster.cs">
       <DependentUpon>dbZedPlus.tt</DependentUpon>
     </Compile>
     <Compile Include="tblSubCategoryMaster.cs">
@@ -545,13 +506,13 @@
     <Compile Include="tblVenderMaster.cs">
       <DependentUpon>dbZedPlus.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblwishlist.cs">
-      <DependentUpon>dbZedPlus.tt</DependentUpon>
-    </Compile>
     <Compile Include="tbl_Wallet.cs">
       <DependentUpon>dbZedPlus.tt</DependentUpon>
     </Compile>
-    <Compile Include="VariantAttributeValue.cs">
+    <Compile Include="Variant.cs">
+      <DependentUpon>dbZedPlus.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VariantValue.cs">
       <DependentUpon>dbZedPlus.tt</DependentUpon>
     </Compile>
   </ItemGroup>

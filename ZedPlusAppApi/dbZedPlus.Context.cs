@@ -25,10 +25,7 @@ namespace ZedPlusAppApi
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Filter> Filters { get; set; }
-        public virtual DbSet<FilterValue> FilterValues { get; set; }
         public virtual DbSet<PayoutDistribution> PayoutDistributions { get; set; }
-        public virtual DbSet<ProductVariant> ProductVariants { get; set; }
         public virtual DbSet<tblAddress> tblAddresses { get; set; }
         public virtual DbSet<tblBankMaster> tblBankMasters { get; set; }
         public virtual DbSet<tblBrandMaster> tblBrandMasters { get; set; }
@@ -37,7 +34,6 @@ namespace ZedPlusAppApi
         public virtual DbSet<tblCategoryMaster> tblCategoryMasters { get; set; }
         public virtual DbSet<tblCategorySlider> tblCategorySliders { get; set; }
         public virtual DbSet<tblCityMaster> tblCityMasters { get; set; }
-        public virtual DbSet<tblColorMaster> tblColorMasters { get; set; }
         public virtual DbSet<tblCountryMaster> tblCountryMasters { get; set; }
         public virtual DbSet<tblCustomer> tblCustomers { get; set; }
         public virtual DbSet<tblCustomerAadharCard> tblCustomerAadharCards { get; set; }
@@ -45,11 +41,9 @@ namespace ZedPlusAppApi
         public virtual DbSet<tblCustomerBankDetail> tblCustomerBankDetails { get; set; }
         public virtual DbSet<tblCustomerDummy> tblCustomerDummies { get; set; }
         public virtual DbSet<tblCustomerPanCard> tblCustomerPanCards { get; set; }
-        public virtual DbSet<tblCustomerQuery> tblCustomerQueries { get; set; }
         public virtual DbSet<tblDashboardSlider> tblDashboardSliders { get; set; }
         public virtual DbSet<tblDistrictMaster> tblDistrictMasters { get; set; }
         public virtual DbSet<tblDocumentMaster> tblDocumentMasters { get; set; }
-        public virtual DbSet<tblDummyCustdata> tblDummyCustdatas { get; set; }
         public virtual DbSet<tblFabricTypeMaster> tblFabricTypeMasters { get; set; }
         public virtual DbSet<tblFilterAllotment> tblFilterAllotments { get; set; }
         public virtual DbSet<tblFranchiseRequest> tblFranchiseRequests { get; set; }
@@ -65,24 +59,16 @@ namespace ZedPlusAppApi
         public virtual DbSet<tblMOQmaster> tblMOQmasters { get; set; }
         public virtual DbSet<tblNotification> tblNotifications { get; set; }
         public virtual DbSet<tblOrder> tblOrders { get; set; }
-        public virtual DbSet<tblOrderItem> tblOrderItems { get; set; }
         public virtual DbSet<tblPackingType> tblPackingTypes { get; set; }
         public virtual DbSet<tblPayment> tblPayments { get; set; }
         public virtual DbSet<tblProduct> tblProducts { get; set; }
-        public virtual DbSet<tblproductinfo> tblproductinfoes { get; set; }
         public virtual DbSet<tblProductTransfer> tblProductTransfers { get; set; }
-        public virtual DbSet<tblProductType> tblProductTypes { get; set; }
         public virtual DbSet<tblpromotionincome> tblpromotionincomes { get; set; }
-        public virtual DbSet<tblPurchase> tblPurchases { get; set; }
-        public virtual DbSet<tblQty> tblQties { get; set; }
-        public virtual DbSet<tblReceiveProduct> tblReceiveProducts { get; set; }
         public virtual DbSet<tblRequirement> tblRequirements { get; set; }
         public virtual DbSet<tblShipping> tblShippings { get; set; }
-        public virtual DbSet<tblSizeMaster> tblSizeMasters { get; set; }
         public virtual DbSet<tblStateMaster> tblStateMasters { get; set; }
         public virtual DbSet<tblStore_Master> tblStore_Master { get; set; }
         public virtual DbSet<tblStoreTypeMaster> tblStoreTypeMasters { get; set; }
-        public virtual DbSet<tblstylemaster> tblstylemasters { get; set; }
         public virtual DbSet<tblSubCategoryMaster> tblSubCategoryMasters { get; set; }
         public virtual DbSet<tblSubcategorySlider> tblSubcategorySliders { get; set; }
         public virtual DbSet<tblSubMenuMaster> tblSubMenuMasters { get; set; }
@@ -91,9 +77,10 @@ namespace ZedPlusAppApi
         public virtual DbSet<tblUserMaster> tblUserMasters { get; set; }
         public virtual DbSet<tblVaraintsimage> tblVaraintsimages { get; set; }
         public virtual DbSet<tblVenderMaster> tblVenderMasters { get; set; }
-        public virtual DbSet<VariantAttributeValue> VariantAttributeValues { get; set; }
         public virtual DbSet<tbl_Wallet> tbl_Wallet { get; set; }
         public virtual DbSet<tblCart> tblCarts { get; set; }
-        public virtual DbSet<tblwishlist> tblwishlists { get; set; }
+        public virtual DbSet<tblStockEntry> tblStockEntries { get; set; }
+        public virtual DbSet<Variant> Variants { get; set; }
+        public virtual DbSet<VariantValue> VariantValues { get; set; }
     }
 }

@@ -5,22 +5,6 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="dbzedplusshopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Filters">
-          <Key>
-            <PropertyRef Name="FilterID" />
-          </Key>
-          <Property Name="FilterID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FilterName" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="SubmenuID" Type="bigint" />
-        </EntityType>
-        <EntityType Name="FilterValues">
-          <Key>
-            <PropertyRef Name="ValueID" />
-          </Key>
-          <Property Name="ValueID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FilterID" Type="bigint" />
-          <Property Name="Value" Type="varchar" MaxLength="255" Nullable="false" />
-        </EntityType>
         <EntityType Name="PayoutDistribution">
           <Key>
             <PropertyRef Name="ID" />
@@ -31,17 +15,6 @@
           <Property Name="Level" Type="int" />
           <Property Name="Amount" Type="decimal" Precision="10" Scale="2" />
           <Property Name="MainCustomerID" Type="bigint" />
-        </EntityType>
-        <EntityType Name="ProductVariants">
-          <Key>
-            <PropertyRef Name="VariantID" />
-          </Key>
-          <Property Name="VariantID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ProductID" Type="bigint" />
-          <Property Name="AdditionalPrice" Type="decimal" Precision="10" Scale="2" />
-          <Property Name="Stock" Type="int" />
-          <Property Name="SKU" Type="varchar" MaxLength="50" />
-          <Property Name="IsPrimary" Type="bit" />
         </EntityType>
         <EntityType Name="tblAddress">
           <Key>
@@ -142,15 +115,6 @@
           <Property Name="City_Status" Type="varchar" MaxLength="50" />
           <Property Name="DistrictID" Type="bigint" />
           <Property Name="PinCode" Type="bigint" />
-        </EntityType>
-        <EntityType Name="tblColorMaster">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Color_Name" Type="varchar" MaxLength="100" />
-          <Property Name="Date" Type="date" />
-          <Property Name="Status" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="tblCountryMaster">
           <Key>
@@ -260,19 +224,6 @@
           <Property Name="Status" Type="varchar" MaxLength="50" />
           <Property Name="DateTime" Type="varchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="tblCustomerQuery">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CustomerID" Type="bigint" />
-          <Property Name="FullName" Type="varchar" MaxLength="500" />
-          <Property Name="EmailID" Type="varchar" MaxLength="500" />
-          <Property Name="Subject" Type="varchar" MaxLength="500" />
-          <Property Name="Remarks" Type="varchar" MaxLength="500" />
-          <Property Name="EntryDateTime" Type="varchar" MaxLength="50" />
-          <Property Name="Status" Type="varchar" MaxLength="50" />
-        </EntityType>
         <EntityType Name="tblDashboardSlider">
           <Key>
             <PropertyRef Name="Id" />
@@ -298,16 +249,6 @@
           <Property Name="Document_Name" Type="varchar" MaxLength="5000" />
           <Property Name="Document_Path" Type="varchar" MaxLength="5000" />
           <Property Name="Status" Type="varchar" MaxLength="50" />
-        </EntityType>
-        <EntityType Name="tblDummyCustdata">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ZEDPLUSID" Type="varchar" MaxLength="100" />
-          <Property Name="Name" Type="varchar" MaxLength="200" />
-          <Property Name="superzedplusid" Type="varchar" MaxLength="100" />
-          <Property Name="mobileno" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="tblFabricTypeMaster">
           <Key>
@@ -520,17 +461,6 @@
           <Property Name="OrderNumber" Type="varchar(max)" />
           <Property Name="PaymentStatus" Type="varchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="tblOrderItems">
-          <Key>
-            <PropertyRef Name="OrderItemID" />
-          </Key>
-          <Property Name="OrderItemID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="OrderID" Type="bigint" />
-          <Property Name="ProductID" Type="bigint" />
-          <Property Name="VariantID" Type="bigint" />
-          <Property Name="Quantity" Type="int" />
-          <Property Name="Price" Type="decimal" Precision="10" Scale="2" />
-        </EntityType>
         <EntityType Name="tblPackingType">
           <Key>
             <PropertyRef Name="PackingTypeID" />
@@ -595,23 +525,6 @@
           <Property Name="PackingID" Type="bigint" />
           <Property Name="HsnCode" Type="bigint" />
         </EntityType>
-        <EntityType Name="tblproductinfo">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ProductID" Type="bigint" Nullable="false" />
-          <Property Name="GTIN" Type="varchar" MaxLength="50" />
-          <Property Name="ProductOrigin" Type="varchar" MaxLength="50" />
-          <Property Name="ManufacturerName" Type="nchar" MaxLength="10" />
-          <Property Name="WarrantyPeriod" Type="nchar" MaxLength="10" />
-          <Property Name="NetWeight" Type="nchar" MaxLength="10" />
-          <Property Name="NetContent" Type="nchar" MaxLength="10" />
-          <Property Name="GrossWeight" Type="varchar" MaxLength="50" />
-          <Property Name="Tags" Type="nchar" MaxLength="10" />
-          <Property Name="ReturnPolicy" Type="bit" />
-          <Property Name="SKU" Type="varchar" MaxLength="50" />
-        </EntityType>
         <EntityType Name="tblProductTransfer">
           <Key>
             <PropertyRef Name="ID" />
@@ -626,15 +539,6 @@
           <Property Name="StockQTY" Type="bigint" />
           <Property Name="transfer_date" Type="varchar" MaxLength="50" />
           <Property Name="status" Type="varchar" MaxLength="50" />
-        </EntityType>
-        <EntityType Name="tblProductType">
-          <Key>
-            <PropertyRef Name="ProductTypeID" />
-          </Key>
-          <Property Name="ProductTypeID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CategoryID" Type="bigint" />
-          <Property Name="SubCategoryID" Type="bigint" />
-          <Property Name="ProductTypeName" Type="varchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="tblpromotionincome">
           <Key>
@@ -654,58 +558,6 @@
           <Property Name="Remarks3" Type="varchar" MaxLength="100" />
           <Property Name="Remarks4" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Remarks5" Type="varchar" MaxLength="100" />
-        </EntityType>
-        <EntityType Name="tblPurchase">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ClientBillNo" Type="varchar" MaxLength="50" />
-          <Property Name="Date" Type="varchar" MaxLength="50" />
-          <Property Name="VenderID" Type="bigint" />
-          <Property Name="SubMenuID" Type="bigint" />
-          <Property Name="ItemID" Type="bigint" />
-          <Property Name="Quantity" Type="float" />
-          <Property Name="UnitID" Type="bigint" />
-          <Property Name="QtyperUnit" Type="float" />
-          <Property Name="StockQuantity" Type="float" />
-          <Property Name="Rate" Type="float" />
-          <Property Name="Amount" Type="float" />
-          <Property Name="GstRate" Type="float" />
-          <Property Name="GstAmount" Type="float" />
-          <Property Name="TotalAmount" Type="float" />
-          <Property Name="BrandID" Type="bigint" />
-          <Property Name="CategoryID" Type="bigint" />
-          <Property Name="SubCategoryID" Type="bigint" />
-          <Property Name="Status" Type="varchar" MaxLength="50" />
-          <Property Name="StoreID" Type="bigint" />
-          <Property Name="StoreTypeID" Type="bigint" />
-        </EntityType>
-        <EntityType Name="tblQty">
-          <Key>
-            <PropertyRef Name="QuantityID" />
-          </Key>
-          <Property Name="QuantityID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CategoryID" Type="bigint" />
-          <Property Name="SubCategoryID" Type="bigint" />
-          <Property Name="Unit" Type="varchar" MaxLength="50" />
-        </EntityType>
-        <EntityType Name="tblReceiveProducts">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Source_storeID" Type="nchar" MaxLength="10" />
-          <Property Name="Destination_storeID" Type="nchar" MaxLength="10" />
-          <Property Name="Product_id" Type="nchar" MaxLength="10" />
-          <Property Name="Quantity" Type="nchar" MaxLength="10" />
-          <Property Name="UnitID" Type="nchar" MaxLength="10" />
-          <Property Name="QuantityperCarton" Type="nchar" MaxLength="10" />
-          <Property Name="StockQTY" Type="nchar" MaxLength="10" />
-          <Property Name="Receive_date" Type="nchar" MaxLength="10" />
-          <Property Name="Received_from" Type="nchar" MaxLength="10" />
-          <Property Name="Transfer_id" Type="nchar" MaxLength="10" />
-          <Property Name="Status" Type="nchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="tblRequirement">
           <Key>
@@ -730,13 +582,6 @@
           <Property Name="ShippingDate" Type="varchar" MaxLength="50" />
           <Property Name="DeliveryDate" Type="varchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="tblSizeMaster">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Size_Name" Type="varchar" MaxLength="200" />
-        </EntityType>
         <EntityType Name="tblStateMaster">
           <Key>
             <PropertyRef Name="StateID" />
@@ -745,6 +590,41 @@
           <Property Name="State_Name" Type="varchar" MaxLength="100" />
           <Property Name="State_Status" Type="varchar" MaxLength="50" />
           <Property Name="Country_ID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tblStockEntry">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductID" Type="bigint" />
+          <Property Name="Price" Type="float" />
+          <Property Name="Stock" Type="int" />
+          <Property Name="UnitValue" Type="varchar" MaxLength="50" />
+          <Property Name="UnitID" Type="bigint" />
+          <Property Name="QtyperCartoon" Type="varchar" MaxLength="50" />
+          <Property Name="MRP" Type="float" />
+          <Property Name="NRP" Type="float" />
+          <Property Name="DP" Type="float" />
+          <Property Name="GST" Type="float" />
+          <Property Name="HSN" Type="bigint" />
+          <Property Name="BARCODE" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="CoupenID" Type="bigint" />
+          <Property Name="EntryDate" Type="varchar" MaxLength="50" />
+          <Property Name="IsDefault" Type="bit" />
+          <Property Name="VariantID1" Type="bigint" />
+          <Property Name="VariantValueID1" Type="bigint" />
+          <Property Name="VariantID2" Type="bigint" />
+          <Property Name="VariantValueID2" Type="bigint" />
+          <Property Name="VariantID3" Type="bigint" />
+          <Property Name="VariantValueID3" Type="bigint" />
+          <Property Name="VariantID4" Type="bigint" />
+          <Property Name="VariantValueID4" Type="bigint" />
+          <Property Name="VariantID5" Type="bigint" />
+          <Property Name="VariantValueID5" Type="bigint" />
+          <Property Name="VariantID6" Type="bigint" />
+          <Property Name="VariantValueID6" Type="bigint" />
+          <Property Name="ModifiedDate" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="tblStore_Master">
           <Key>
@@ -774,14 +654,6 @@
           <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Store_type" Type="varchar" MaxLength="50" />
           <Property Name="Status" Type="varchar" MaxLength="50" />
-        </EntityType>
-        <EntityType Name="tblstylemaster">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Style_Name" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="tblSubCategoryMaster">
           <Key>
@@ -865,23 +737,21 @@
           <Property Name="DistrictID" Type="bigint" />
           <Property Name="CityID" Type="bigint" />
         </EntityType>
-        <EntityType Name="tblwishlist">
+        <EntityType Name="Variant">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="FilterID" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="user_id" Type="int" Nullable="false" />
-          <Property Name="product_id" Type="int" Nullable="false" />
-          <Property Name="added_at" Type="datetime" />
+          <Property Name="FilterID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FilterName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="SubmenuID" Type="bigint" />
         </EntityType>
-        <EntityType Name="VariantAttributeValues">
+        <EntityType Name="VariantValues">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="ValueID" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="VariantID" Type="int" />
-          <Property Name="AttributeID" Type="int" />
-          <Property Name="AttributeValueID" Type="int" />
+          <Property Name="ValueID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FilterID" Type="bigint" />
+          <Property Name="Value" Type="varchar" MaxLength="255" Nullable="false" />
         </EntityType>
         <EntityType Name="tbl_Wallet">
           <Key>
@@ -896,10 +766,7 @@
           <Property Name="MemberID" Type="bigint" />
         </EntityType>
         <EntityContainer Name="dbzedplusshopModelStoreContainer">
-          <EntitySet Name="Filters" EntityType="Self.Filters" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="FilterValues" EntityType="Self.FilterValues" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PayoutDistribution" EntityType="Self.PayoutDistribution" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ProductVariants" EntityType="Self.ProductVariants" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblAddress" EntityType="Self.tblAddress" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblBankMaster" EntityType="Self.tblBankMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblBrandMaster" EntityType="Self.tblBrandMaster" Schema="dbo" store:Type="Tables" />
@@ -909,7 +776,6 @@
           <EntitySet Name="tblCategoryMaster" EntityType="Self.tblCategoryMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblCategorySlider" EntityType="Self.tblCategorySlider" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblCityMaster" EntityType="Self.tblCityMaster" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tblColorMaster" EntityType="Self.tblColorMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblCountryMaster" EntityType="Self.tblCountryMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblCustomer" EntityType="Self.tblCustomer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblCustomerAadharCard" EntityType="Self.tblCustomerAadharCard" Schema="dbo" store:Type="Tables" />
@@ -917,11 +783,9 @@
           <EntitySet Name="tblCustomerBankDetail" EntityType="Self.tblCustomerBankDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblCustomerDummy" EntityType="Self.tblCustomerDummy" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblCustomerPanCard" EntityType="Self.tblCustomerPanCard" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tblCustomerQuery" EntityType="Self.tblCustomerQuery" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblDashboardSlider" EntityType="Self.tblDashboardSlider" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblDistrictMaster" EntityType="Self.tblDistrictMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblDocumentMaster" EntityType="Self.tblDocumentMaster" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tblDummyCustdata" EntityType="Self.tblDummyCustdata" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblFabricTypeMaster" EntityType="Self.tblFabricTypeMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblFilterAllotment" EntityType="Self.tblFilterAllotment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblFranchiseRequest" EntityType="Self.tblFranchiseRequest" Schema="dbo" store:Type="Tables" />
@@ -937,24 +801,17 @@
           <EntitySet Name="tblMOQmaster" EntityType="Self.tblMOQmaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblNotification" EntityType="Self.tblNotification" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblOrder" EntityType="Self.tblOrder" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tblOrderItems" EntityType="Self.tblOrderItems" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblPackingType" EntityType="Self.tblPackingType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblPayment" EntityType="Self.tblPayment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblProduct" EntityType="Self.tblProduct" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tblproductinfo" EntityType="Self.tblproductinfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblProductTransfer" EntityType="Self.tblProductTransfer" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tblProductType" EntityType="Self.tblProductType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblpromotionincome" EntityType="Self.tblpromotionincome" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tblPurchase" EntityType="Self.tblPurchase" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tblQty" EntityType="Self.tblQty" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tblReceiveProducts" EntityType="Self.tblReceiveProducts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblRequirement" EntityType="Self.tblRequirement" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblShipping" EntityType="Self.tblShipping" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tblSizeMaster" EntityType="Self.tblSizeMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblStateMaster" EntityType="Self.tblStateMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblStockEntry" EntityType="Self.tblStockEntry" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblStore_Master" EntityType="Self.tblStore_Master" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblStoreTypeMaster" EntityType="Self.tblStoreTypeMaster" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tblstylemaster" EntityType="Self.tblstylemaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblSubCategoryMaster" EntityType="Self.tblSubCategoryMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblSubcategorySlider" EntityType="Self.tblSubcategorySlider" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblSubMenuMaster" EntityType="Self.tblSubMenuMaster" Schema="dbo" store:Type="Tables" />
@@ -963,8 +820,8 @@
           <EntitySet Name="tblUserMaster" EntityType="Self.tblUserMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblVaraintsimages" EntityType="Self.tblVaraintsimages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblVenderMaster" EntityType="Self.tblVenderMaster" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tblwishlist" EntityType="Self.tblwishlist" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="VariantAttributeValues" EntityType="Self.VariantAttributeValues" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Variant" EntityType="Self.Variant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VariantValues" EntityType="Self.VariantValues" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Wallet" EntityType="Self.tbl_Wallet" Schema="dbozedpluseshop" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -972,10 +829,7 @@
     <edmx:ConceptualModels>
       <Schema Namespace="dbzedplusshopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="db_zedPlusShopEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Filters" EntityType="dbzedplusshopModel.Filter" />
-          <EntitySet Name="FilterValues" EntityType="dbzedplusshopModel.FilterValue" />
           <EntitySet Name="PayoutDistributions" EntityType="dbzedplusshopModel.PayoutDistribution" />
-          <EntitySet Name="ProductVariants" EntityType="dbzedplusshopModel.ProductVariant" />
           <EntitySet Name="tblAddresses" EntityType="dbzedplusshopModel.tblAddress" />
           <EntitySet Name="tblBankMasters" EntityType="dbzedplusshopModel.tblBankMaster" />
           <EntitySet Name="tblBrandMasters" EntityType="dbzedplusshopModel.tblBrandMaster" />
@@ -984,7 +838,6 @@
           <EntitySet Name="tblCategoryMasters" EntityType="dbzedplusshopModel.tblCategoryMaster" />
           <EntitySet Name="tblCategorySliders" EntityType="dbzedplusshopModel.tblCategorySlider" />
           <EntitySet Name="tblCityMasters" EntityType="dbzedplusshopModel.tblCityMaster" />
-          <EntitySet Name="tblColorMasters" EntityType="dbzedplusshopModel.tblColorMaster" />
           <EntitySet Name="tblCountryMasters" EntityType="dbzedplusshopModel.tblCountryMaster" />
           <EntitySet Name="tblCustomers" EntityType="dbzedplusshopModel.tblCustomer" />
           <EntitySet Name="tblCustomerAadharCards" EntityType="dbzedplusshopModel.tblCustomerAadharCard" />
@@ -992,11 +845,9 @@
           <EntitySet Name="tblCustomerBankDetails" EntityType="dbzedplusshopModel.tblCustomerBankDetail" />
           <EntitySet Name="tblCustomerDummies" EntityType="dbzedplusshopModel.tblCustomerDummy" />
           <EntitySet Name="tblCustomerPanCards" EntityType="dbzedplusshopModel.tblCustomerPanCard" />
-          <EntitySet Name="tblCustomerQueries" EntityType="dbzedplusshopModel.tblCustomerQuery" />
           <EntitySet Name="tblDashboardSliders" EntityType="dbzedplusshopModel.tblDashboardSlider" />
           <EntitySet Name="tblDistrictMasters" EntityType="dbzedplusshopModel.tblDistrictMaster" />
           <EntitySet Name="tblDocumentMasters" EntityType="dbzedplusshopModel.tblDocumentMaster" />
-          <EntitySet Name="tblDummyCustdatas" EntityType="dbzedplusshopModel.tblDummyCustdata" />
           <EntitySet Name="tblFabricTypeMasters" EntityType="dbzedplusshopModel.tblFabricTypeMaster" />
           <EntitySet Name="tblFilterAllotments" EntityType="dbzedplusshopModel.tblFilterAllotment" />
           <EntitySet Name="tblFranchiseRequests" EntityType="dbzedplusshopModel.tblFranchiseRequest" />
@@ -1012,24 +863,16 @@
           <EntitySet Name="tblMOQmasters" EntityType="dbzedplusshopModel.tblMOQmaster" />
           <EntitySet Name="tblNotifications" EntityType="dbzedplusshopModel.tblNotification" />
           <EntitySet Name="tblOrders" EntityType="dbzedplusshopModel.tblOrder" />
-          <EntitySet Name="tblOrderItems" EntityType="dbzedplusshopModel.tblOrderItem" />
           <EntitySet Name="tblPackingTypes" EntityType="dbzedplusshopModel.tblPackingType" />
           <EntitySet Name="tblPayments" EntityType="dbzedplusshopModel.tblPayment" />
           <EntitySet Name="tblProducts" EntityType="dbzedplusshopModel.tblProduct" />
-          <EntitySet Name="tblproductinfoes" EntityType="dbzedplusshopModel.tblproductinfo" />
           <EntitySet Name="tblProductTransfers" EntityType="dbzedplusshopModel.tblProductTransfer" />
-          <EntitySet Name="tblProductTypes" EntityType="dbzedplusshopModel.tblProductType" />
           <EntitySet Name="tblpromotionincomes" EntityType="dbzedplusshopModel.tblpromotionincome" />
-          <EntitySet Name="tblPurchases" EntityType="dbzedplusshopModel.tblPurchase" />
-          <EntitySet Name="tblQties" EntityType="dbzedplusshopModel.tblQty" />
-          <EntitySet Name="tblReceiveProducts" EntityType="dbzedplusshopModel.tblReceiveProduct" />
           <EntitySet Name="tblRequirements" EntityType="dbzedplusshopModel.tblRequirement" />
           <EntitySet Name="tblShippings" EntityType="dbzedplusshopModel.tblShipping" />
-          <EntitySet Name="tblSizeMasters" EntityType="dbzedplusshopModel.tblSizeMaster" />
           <EntitySet Name="tblStateMasters" EntityType="dbzedplusshopModel.tblStateMaster" />
           <EntitySet Name="tblStore_Master" EntityType="dbzedplusshopModel.tblStore_Master" />
           <EntitySet Name="tblStoreTypeMasters" EntityType="dbzedplusshopModel.tblStoreTypeMaster" />
-          <EntitySet Name="tblstylemasters" EntityType="dbzedplusshopModel.tblstylemaster" />
           <EntitySet Name="tblSubCategoryMasters" EntityType="dbzedplusshopModel.tblSubCategoryMaster" />
           <EntitySet Name="tblSubcategorySliders" EntityType="dbzedplusshopModel.tblSubcategorySlider" />
           <EntitySet Name="tblSubMenuMasters" EntityType="dbzedplusshopModel.tblSubMenuMaster" />
@@ -1038,27 +881,12 @@
           <EntitySet Name="tblUserMasters" EntityType="dbzedplusshopModel.tblUserMaster" />
           <EntitySet Name="tblVaraintsimages" EntityType="dbzedplusshopModel.tblVaraintsimage" />
           <EntitySet Name="tblVenderMasters" EntityType="dbzedplusshopModel.tblVenderMaster" />
-          <EntitySet Name="VariantAttributeValues" EntityType="dbzedplusshopModel.VariantAttributeValue" />
           <EntitySet Name="tbl_Wallet" EntityType="dbzedplusshopModel.tbl_Wallet" />
           <EntitySet Name="tblCarts" EntityType="dbzedplusshopModel.tblCart" />
-          <EntitySet Name="tblwishlists" EntityType="dbzedplusshopModel.tblwishlist" />
+          <EntitySet Name="tblStockEntries" EntityType="dbzedplusshopModel.tblStockEntry" />
+          <EntitySet Name="Variants" EntityType="dbzedplusshopModel.Variant" />
+          <EntitySet Name="VariantValues" EntityType="dbzedplusshopModel.VariantValue" />
         </EntityContainer>
-        <EntityType Name="Filter">
-          <Key>
-            <PropertyRef Name="FilterID" />
-          </Key>
-          <Property Name="FilterID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FilterName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="SubmenuID" Type="Int64" />
-        </EntityType>
-        <EntityType Name="FilterValue">
-          <Key>
-            <PropertyRef Name="ValueID" />
-          </Key>
-          <Property Name="ValueID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FilterID" Type="Int64" />
-          <Property Name="Value" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="PayoutDistribution">
           <Key>
             <PropertyRef Name="ID" />
@@ -1069,17 +897,6 @@
           <Property Name="Level" Type="Int32" />
           <Property Name="Amount" Type="Decimal" Precision="10" Scale="2" />
           <Property Name="MainCustomerID" Type="Int64" />
-        </EntityType>
-        <EntityType Name="ProductVariant">
-          <Key>
-            <PropertyRef Name="VariantID" />
-          </Key>
-          <Property Name="VariantID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ProductID" Type="Int64" />
-          <Property Name="AdditionalPrice" Type="Decimal" Precision="10" Scale="2" />
-          <Property Name="Stock" Type="Int32" />
-          <Property Name="SKU" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="IsPrimary" Type="Boolean" />
         </EntityType>
         <EntityType Name="tblAddress">
           <Key>
@@ -1166,15 +983,6 @@
           <Property Name="City_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DistrictID" Type="Int64" />
           <Property Name="PinCode" Type="Int64" />
-        </EntityType>
-        <EntityType Name="tblColorMaster">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Color_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Date" Type="DateTime" Precision="0" />
-          <Property Name="Status" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tblCountryMaster">
           <Key>
@@ -1284,19 +1092,6 @@
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DateTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="tblCustomerQuery">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CustomerID" Type="Int64" />
-          <Property Name="FullName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="EmailID" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Subject" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="EntryDateTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="tblDashboardSlider">
           <Key>
             <PropertyRef Name="Id" />
@@ -1322,16 +1117,6 @@
           <Property Name="Document_Name" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
           <Property Name="Document_Path" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="tblDummyCustdata">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ZEDPLUSID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="superzedplusid" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="mobileno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tblFabricTypeMaster">
           <Key>
@@ -1544,17 +1329,6 @@
           <Property Name="OrderNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="PaymentStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="tblOrderItem">
-          <Key>
-            <PropertyRef Name="OrderItemID" />
-          </Key>
-          <Property Name="OrderItemID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OrderID" Type="Int64" />
-          <Property Name="ProductID" Type="Int64" />
-          <Property Name="VariantID" Type="Int64" />
-          <Property Name="Quantity" Type="Int32" />
-          <Property Name="Price" Type="Decimal" Precision="10" Scale="2" />
-        </EntityType>
         <EntityType Name="tblPackingType">
           <Key>
             <PropertyRef Name="PackingTypeID" />
@@ -1619,23 +1393,6 @@
           <Property Name="PackingID" Type="Int64" />
           <Property Name="HsnCode" Type="Int64" />
         </EntityType>
-        <EntityType Name="tblproductinfo">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ProductID" Type="Int64" Nullable="false" />
-          <Property Name="GTIN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ProductOrigin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ManufacturerName" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="WarrantyPeriod" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="NetWeight" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="NetContent" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="GrossWeight" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Tags" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="ReturnPolicy" Type="Boolean" />
-          <Property Name="SKU" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="tblProductTransfer">
           <Key>
             <PropertyRef Name="ID" />
@@ -1650,15 +1407,6 @@
           <Property Name="StockQTY" Type="Int64" />
           <Property Name="transfer_date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="tblProductType">
-          <Key>
-            <PropertyRef Name="ProductTypeID" />
-          </Key>
-          <Property Name="ProductTypeID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CategoryID" Type="Int64" />
-          <Property Name="SubCategoryID" Type="Int64" />
-          <Property Name="ProductTypeName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tblpromotionincome">
           <Key>
@@ -1678,58 +1426,6 @@
           <Property Name="Remarks3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Remarks4" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Remarks5" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="tblPurchase">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ClientBillNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="VenderID" Type="Int64" />
-          <Property Name="SubMenuID" Type="Int64" />
-          <Property Name="ItemID" Type="Int64" />
-          <Property Name="Quantity" Type="Double" />
-          <Property Name="UnitID" Type="Int64" />
-          <Property Name="QtyperUnit" Type="Double" />
-          <Property Name="StockQuantity" Type="Double" />
-          <Property Name="Rate" Type="Double" />
-          <Property Name="Amount" Type="Double" />
-          <Property Name="GstRate" Type="Double" />
-          <Property Name="GstAmount" Type="Double" />
-          <Property Name="TotalAmount" Type="Double" />
-          <Property Name="BrandID" Type="Int64" />
-          <Property Name="CategoryID" Type="Int64" />
-          <Property Name="SubCategoryID" Type="Int64" />
-          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="StoreID" Type="Int64" />
-          <Property Name="StoreTypeID" Type="Int64" />
-        </EntityType>
-        <EntityType Name="tblQty">
-          <Key>
-            <PropertyRef Name="QuantityID" />
-          </Key>
-          <Property Name="QuantityID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CategoryID" Type="Int64" />
-          <Property Name="SubCategoryID" Type="Int64" />
-          <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="tblReceiveProduct">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Source_storeID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="Destination_storeID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="Product_id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="Quantity" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="UnitID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="QuantityperCarton" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="StockQTY" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="Receive_date" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="Received_from" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="Transfer_id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="tblRequirement">
           <Key>
@@ -1753,13 +1449,6 @@
           <Property Name="EstimatedDeliveryDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ShippingDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DeliveryDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="tblSizeMaster">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Size_Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tblStateMaster">
           <Key>
@@ -1798,14 +1487,6 @@
           <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Store_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="tblstylemaster">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Style_Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Status" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tblSubCategoryMaster">
           <Key>
@@ -1889,15 +1570,6 @@
           <Property Name="DistrictID" Type="Int64" />
           <Property Name="CityID" Type="Int64" />
         </EntityType>
-        <EntityType Name="VariantAttributeValue">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="VariantID" Type="Int32" />
-          <Property Name="AttributeID" Type="Int32" />
-          <Property Name="AttributeValueID" Type="Int32" />
-        </EntityType>
         <EntityType Name="tbl_Wallet">
           <Key>
             <PropertyRef Name="Id" />
@@ -1924,14 +1596,56 @@
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="VarientId" Type="Int64" />
         </EntityType>
-        <EntityType Name="tblwishlist">
+        <EntityType Name="tblStockEntry">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="user_id" Type="Int32" Nullable="false" />
-          <Property Name="product_id" Type="Int32" Nullable="false" />
-          <Property Name="added_at" Type="DateTime" Precision="3" />
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductID" Type="Int64" />
+          <Property Name="Price" Type="Double" />
+          <Property Name="Stock" Type="Int32" />
+          <Property Name="UnitValue" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UnitID" Type="Int64" />
+          <Property Name="QtyperCartoon" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MRP" Type="Double" />
+          <Property Name="NRP" Type="Double" />
+          <Property Name="DP" Type="Double" />
+          <Property Name="GST" Type="Double" />
+          <Property Name="HSN" Type="Int64" />
+          <Property Name="BARCODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CoupenID" Type="Int64" />
+          <Property Name="EntryDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsDefault" Type="Boolean" />
+          <Property Name="VariantID1" Type="Int64" />
+          <Property Name="VariantValueID1" Type="Int64" />
+          <Property Name="VariantID2" Type="Int64" />
+          <Property Name="VariantValueID2" Type="Int64" />
+          <Property Name="VariantID3" Type="Int64" />
+          <Property Name="VariantValueID3" Type="Int64" />
+          <Property Name="VariantID4" Type="Int64" />
+          <Property Name="VariantValueID4" Type="Int64" />
+          <Property Name="VariantID5" Type="Int64" />
+          <Property Name="VariantValueID5" Type="Int64" />
+          <Property Name="VariantID6" Type="Int64" />
+          <Property Name="VariantValueID6" Type="Int64" />
+          <Property Name="ModifiedDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Variant">
+          <Key>
+            <PropertyRef Name="FilterID" />
+          </Key>
+          <Property Name="FilterID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FilterName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SubmenuID" Type="Int64" />
+        </EntityType>
+        <EntityType Name="VariantValue">
+          <Key>
+            <PropertyRef Name="ValueID" />
+          </Key>
+          <Property Name="ValueID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FilterID" Type="Int64" />
+          <Property Name="Value" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1939,24 +1653,6 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="dbzedplusshopModelStoreContainer" CdmEntityContainer="db_zedPlusShopEntities">
-          <EntitySetMapping Name="Filters">
-            <EntityTypeMapping TypeName="dbzedplusshopModel.Filter">
-              <MappingFragment StoreEntitySet="Filters">
-                <ScalarProperty Name="SubmenuID" ColumnName="SubmenuID" />
-                <ScalarProperty Name="FilterName" ColumnName="FilterName" />
-                <ScalarProperty Name="FilterID" ColumnName="FilterID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="FilterValues">
-            <EntityTypeMapping TypeName="dbzedplusshopModel.FilterValue">
-              <MappingFragment StoreEntitySet="FilterValues">
-                <ScalarProperty Name="Value" ColumnName="Value" />
-                <ScalarProperty Name="FilterID" ColumnName="FilterID" />
-                <ScalarProperty Name="ValueID" ColumnName="ValueID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="PayoutDistributions">
             <EntityTypeMapping TypeName="dbzedplusshopModel.PayoutDistribution">
               <MappingFragment StoreEntitySet="PayoutDistribution">
@@ -1966,18 +1662,6 @@
                 <ScalarProperty Name="SponsorID" ColumnName="SponsorID" />
                 <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ProductVariants">
-            <EntityTypeMapping TypeName="dbzedplusshopModel.ProductVariant">
-              <MappingFragment StoreEntitySet="ProductVariants">
-                <ScalarProperty Name="IsPrimary" ColumnName="IsPrimary" />
-                <ScalarProperty Name="SKU" ColumnName="SKU" />
-                <ScalarProperty Name="Stock" ColumnName="Stock" />
-                <ScalarProperty Name="AdditionalPrice" ColumnName="AdditionalPrice" />
-                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
-                <ScalarProperty Name="VariantID" ColumnName="VariantID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2072,16 +1756,6 @@
                 <ScalarProperty Name="City_Status" ColumnName="City_Status" />
                 <ScalarProperty Name="City_Name" ColumnName="City_Name" />
                 <ScalarProperty Name="CityID" ColumnName="CityID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblColorMasters">
-            <EntityTypeMapping TypeName="dbzedplusshopModel.tblColorMaster">
-              <MappingFragment StoreEntitySet="tblColorMaster">
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="Color_Name" ColumnName="Color_Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2200,20 +1874,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tblCustomerQueries">
-            <EntityTypeMapping TypeName="dbzedplusshopModel.tblCustomerQuery">
-              <MappingFragment StoreEntitySet="tblCustomerQuery">
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="EntryDateTime" ColumnName="EntryDateTime" />
-                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
-                <ScalarProperty Name="Subject" ColumnName="Subject" />
-                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
-                <ScalarProperty Name="FullName" ColumnName="FullName" />
-                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tblDashboardSliders">
             <EntityTypeMapping TypeName="dbzedplusshopModel.tblDashboardSlider">
               <MappingFragment StoreEntitySet="tblDashboardSlider">
@@ -2240,17 +1900,6 @@
                 <ScalarProperty Name="Document_Path" ColumnName="Document_Path" />
                 <ScalarProperty Name="Document_Name" ColumnName="Document_Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblDummyCustdatas">
-            <EntityTypeMapping TypeName="dbzedplusshopModel.tblDummyCustdata">
-              <MappingFragment StoreEntitySet="tblDummyCustdata">
-                <ScalarProperty Name="mobileno" ColumnName="mobileno" />
-                <ScalarProperty Name="superzedplusid" ColumnName="superzedplusid" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ZEDPLUSID" ColumnName="ZEDPLUSID" />
-                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2480,18 +2129,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tblOrderItems">
-            <EntityTypeMapping TypeName="dbzedplusshopModel.tblOrderItem">
-              <MappingFragment StoreEntitySet="tblOrderItems">
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="VariantID" ColumnName="VariantID" />
-                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
-                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
-                <ScalarProperty Name="OrderItemID" ColumnName="OrderItemID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tblPackingTypes">
             <EntityTypeMapping TypeName="dbzedplusshopModel.tblPackingType">
               <MappingFragment StoreEntitySet="tblPackingType">
@@ -2559,24 +2196,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tblproductinfoes">
-            <EntityTypeMapping TypeName="dbzedplusshopModel.tblproductinfo">
-              <MappingFragment StoreEntitySet="tblproductinfo">
-                <ScalarProperty Name="SKU" ColumnName="SKU" />
-                <ScalarProperty Name="ReturnPolicy" ColumnName="ReturnPolicy" />
-                <ScalarProperty Name="Tags" ColumnName="Tags" />
-                <ScalarProperty Name="GrossWeight" ColumnName="GrossWeight" />
-                <ScalarProperty Name="NetContent" ColumnName="NetContent" />
-                <ScalarProperty Name="NetWeight" ColumnName="NetWeight" />
-                <ScalarProperty Name="WarrantyPeriod" ColumnName="WarrantyPeriod" />
-                <ScalarProperty Name="ManufacturerName" ColumnName="ManufacturerName" />
-                <ScalarProperty Name="ProductOrigin" ColumnName="ProductOrigin" />
-                <ScalarProperty Name="GTIN" ColumnName="GTIN" />
-                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tblProductTransfers">
             <EntityTypeMapping TypeName="dbzedplusshopModel.tblProductTransfer">
               <MappingFragment StoreEntitySet="tblProductTransfer">
@@ -2590,16 +2209,6 @@
                 <ScalarProperty Name="destination_storeID" ColumnName="destination_storeID" />
                 <ScalarProperty Name="source_storeID" ColumnName="source_storeID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblProductTypes">
-            <EntityTypeMapping TypeName="dbzedplusshopModel.tblProductType">
-              <MappingFragment StoreEntitySet="tblProductType">
-                <ScalarProperty Name="ProductTypeName" ColumnName="ProductTypeName" />
-                <ScalarProperty Name="SubCategoryID" ColumnName="SubCategoryID" />
-                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
-                <ScalarProperty Name="ProductTypeID" ColumnName="ProductTypeID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2620,61 +2229,6 @@
                 <ScalarProperty Name="amount1" ColumnName="amount1" />
                 <ScalarProperty Name="cid" ColumnName="cid" />
                 <ScalarProperty Name="pid" ColumnName="pid" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblPurchases">
-            <EntityTypeMapping TypeName="dbzedplusshopModel.tblPurchase">
-              <MappingFragment StoreEntitySet="tblPurchase">
-                <ScalarProperty Name="StoreTypeID" ColumnName="StoreTypeID" />
-                <ScalarProperty Name="StoreID" ColumnName="StoreID" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="SubCategoryID" ColumnName="SubCategoryID" />
-                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
-                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
-                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
-                <ScalarProperty Name="GstAmount" ColumnName="GstAmount" />
-                <ScalarProperty Name="GstRate" ColumnName="GstRate" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="Rate" ColumnName="Rate" />
-                <ScalarProperty Name="StockQuantity" ColumnName="StockQuantity" />
-                <ScalarProperty Name="QtyperUnit" ColumnName="QtyperUnit" />
-                <ScalarProperty Name="UnitID" ColumnName="UnitID" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
-                <ScalarProperty Name="SubMenuID" ColumnName="SubMenuID" />
-                <ScalarProperty Name="VenderID" ColumnName="VenderID" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="ClientBillNo" ColumnName="ClientBillNo" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblQties">
-            <EntityTypeMapping TypeName="dbzedplusshopModel.tblQty">
-              <MappingFragment StoreEntitySet="tblQty">
-                <ScalarProperty Name="Unit" ColumnName="Unit" />
-                <ScalarProperty Name="SubCategoryID" ColumnName="SubCategoryID" />
-                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
-                <ScalarProperty Name="QuantityID" ColumnName="QuantityID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblReceiveProducts">
-            <EntityTypeMapping TypeName="dbzedplusshopModel.tblReceiveProduct">
-              <MappingFragment StoreEntitySet="tblReceiveProducts">
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="Transfer_id" ColumnName="Transfer_id" />
-                <ScalarProperty Name="Received_from" ColumnName="Received_from" />
-                <ScalarProperty Name="Receive_date" ColumnName="Receive_date" />
-                <ScalarProperty Name="StockQTY" ColumnName="StockQTY" />
-                <ScalarProperty Name="QuantityperCarton" ColumnName="QuantityperCarton" />
-                <ScalarProperty Name="UnitID" ColumnName="UnitID" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="Product_id" ColumnName="Product_id" />
-                <ScalarProperty Name="Destination_storeID" ColumnName="Destination_storeID" />
-                <ScalarProperty Name="Source_storeID" ColumnName="Source_storeID" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2700,14 +2254,6 @@
                 <ScalarProperty Name="ShippingStatus" ColumnName="ShippingStatus" />
                 <ScalarProperty Name="OrderID" ColumnName="OrderID" />
                 <ScalarProperty Name="ShippingID" ColumnName="ShippingID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblSizeMasters">
-            <EntityTypeMapping TypeName="dbzedplusshopModel.tblSizeMaster">
-              <MappingFragment StoreEntitySet="tblSizeMaster">
-                <ScalarProperty Name="Size_Name" ColumnName="Size_Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2748,15 +2294,6 @@
               <MappingFragment StoreEntitySet="tblStoreTypeMaster">
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="Store_type" ColumnName="Store_type" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblstylemasters">
-            <EntityTypeMapping TypeName="dbzedplusshopModel.tblstylemaster">
-              <MappingFragment StoreEntitySet="tblstylemaster">
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="Style_Name" ColumnName="Style_Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -2851,16 +2388,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="VariantAttributeValues">
-            <EntityTypeMapping TypeName="dbzedplusshopModel.VariantAttributeValue">
-              <MappingFragment StoreEntitySet="VariantAttributeValues">
-                <ScalarProperty Name="AttributeValueID" ColumnName="AttributeValueID" />
-                <ScalarProperty Name="AttributeID" ColumnName="AttributeID" />
-                <ScalarProperty Name="VariantID" ColumnName="VariantID" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tbl_Wallet">
             <EntityTypeMapping TypeName="dbzedplusshopModel.tbl_Wallet">
               <MappingFragment StoreEntitySet="tbl_Wallet">
@@ -2889,13 +2416,57 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tblwishlists">
-            <EntityTypeMapping TypeName="dbzedplusshopModel.tblwishlist">
-              <MappingFragment StoreEntitySet="tblwishlist">
-                <ScalarProperty Name="added_at" ColumnName="added_at" />
-                <ScalarProperty Name="product_id" ColumnName="product_id" />
-                <ScalarProperty Name="user_id" ColumnName="user_id" />
-                <ScalarProperty Name="id" ColumnName="id" />
+          <EntitySetMapping Name="tblStockEntries">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.tblStockEntry">
+              <MappingFragment StoreEntitySet="tblStockEntry">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="VariantValueID6" ColumnName="VariantValueID6" />
+                <ScalarProperty Name="VariantID6" ColumnName="VariantID6" />
+                <ScalarProperty Name="VariantValueID5" ColumnName="VariantValueID5" />
+                <ScalarProperty Name="VariantID5" ColumnName="VariantID5" />
+                <ScalarProperty Name="VariantValueID4" ColumnName="VariantValueID4" />
+                <ScalarProperty Name="VariantID4" ColumnName="VariantID4" />
+                <ScalarProperty Name="VariantValueID3" ColumnName="VariantValueID3" />
+                <ScalarProperty Name="VariantID3" ColumnName="VariantID3" />
+                <ScalarProperty Name="VariantValueID2" ColumnName="VariantValueID2" />
+                <ScalarProperty Name="VariantID2" ColumnName="VariantID2" />
+                <ScalarProperty Name="VariantValueID1" ColumnName="VariantValueID1" />
+                <ScalarProperty Name="VariantID1" ColumnName="VariantID1" />
+                <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="CoupenID" ColumnName="CoupenID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="BARCODE" ColumnName="BARCODE" />
+                <ScalarProperty Name="HSN" ColumnName="HSN" />
+                <ScalarProperty Name="GST" ColumnName="GST" />
+                <ScalarProperty Name="DP" ColumnName="DP" />
+                <ScalarProperty Name="NRP" ColumnName="NRP" />
+                <ScalarProperty Name="MRP" ColumnName="MRP" />
+                <ScalarProperty Name="QtyperCartoon" ColumnName="QtyperCartoon" />
+                <ScalarProperty Name="UnitID" ColumnName="UnitID" />
+                <ScalarProperty Name="UnitValue" ColumnName="UnitValue" />
+                <ScalarProperty Name="Stock" ColumnName="Stock" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Variants">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.Variant">
+              <MappingFragment StoreEntitySet="Variant">
+                <ScalarProperty Name="SubmenuID" ColumnName="SubmenuID" />
+                <ScalarProperty Name="FilterName" ColumnName="FilterName" />
+                <ScalarProperty Name="FilterID" ColumnName="FilterID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VariantValues">
+            <EntityTypeMapping TypeName="dbzedplusshopModel.VariantValue">
+              <MappingFragment StoreEntitySet="VariantValues">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="FilterID" ColumnName="FilterID" />
+                <ScalarProperty Name="ValueID" ColumnName="ValueID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

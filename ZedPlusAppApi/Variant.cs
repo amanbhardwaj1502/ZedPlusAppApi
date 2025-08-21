@@ -12,13 +12,10 @@ namespace ZedPlusAppApi
     using System;
     using System.Collections.Generic;
     
-    public partial class ProductVariant
+    public partial class Variant
     {
-        public long VariantID { get; set; }
-        public Nullable<long> ProductID { get; set; }
-        public Nullable<decimal> AdditionalPrice { get; set; }
-        public Nullable<int> Stock { get; set; }
-        public string SKU { get; set; }
-        public Nullable<bool> IsPrimary { get; set; }
+        public long FilterID { get; set; }
+        public string FilterName { get; set; }
+        public Nullable<long> SubmenuID { get; set; }
     }
 }

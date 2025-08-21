@@ -12,11 +12,10 @@ namespace ZedPlusAppApi
     using System;
     using System.Collections.Generic;
     
-    public partial class tblwishlist
+    public partial class VariantValue
     {
-        public int id { get; set; }
-        public int user_id { get; set; }
-        public int product_id { get; set; }
-        public Nullable<System.DateTime> added_at { get; set; }
+        public long ValueID { get; set; }
+        public Nullable<long> FilterID { get; set; }
+        public string Value { get; set; }
     }
 }
